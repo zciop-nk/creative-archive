@@ -38,25 +38,25 @@ a{text-decoration:none;color:inherit}
 .archive-head span{font-size:10px;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 14px;padding-bottom:60px}
 .card{min-width:0}
-.thumb{aspect-ratio:4/5;background:#ddd;border:1px solid #c9c3b7;position:relative;overflow:hidden}
+.thumb{aspect-ratio:4/5;background:#ddd;border:1px solid #c9c3b7;position:relative;overflow:hidden;container-type:inline-size}
 .meta{display:flex;justify-content:space-between;gap:12px;padding-top:7px;font-size:11px}
 .meta b{font-weight:600}
 .meta span{color:var(--muted)}
 .poster{position:absolute;inset:0;padding:8%;display:flex;flex-direction:column}
-.poster small{font-size:2.2cqw;letter-spacing:.04em}
-.poster h2{margin:10% 0 0;font-size:8cqw;line-height:.9;letter-spacing:-.055em}
-.poster p{font-size:2.3cqw;line-height:1.4;margin-top:auto;max-width:68%}
+.poster small{font-size:2.3cqw;letter-spacing:.04em}
+.poster h2{margin:10% 0 0;font-size:7.1cqw;line-height:.92;letter-spacing:-.05em;overflow-wrap:anywhere}
+.poster p{font-size:2.15cqw;line-height:1.4;margin-top:auto;max-width:72%}
 .p1{background:#f6e6d3}.p1 .hero{height:34%;background:linear-gradient(145deg,#c95d34,#7f2510);margin-top:auto;position:relative}
 .p1 .hero:after{content:"";position:absolute;width:32%;aspect-ratio:1;border-radius:50%;background:#d6b08f;left:34%;top:18%;box-shadow:0 24px 30px #0002}
-.p2{background:#e9e5f0}.p2 h2{font-family:Arial Narrow,Arial,sans-serif;font-size:6.7cqw;letter-spacing:-.035em}
+.p2{background:#e9e5f0}.p2 h2{font-family:Arial Narrow,Arial,sans-serif;font-size:5.9cqw;letter-spacing:-.035em}
 .p2 .shape{margin:auto;width:45%;aspect-ratio:1;border:1px solid #3b2a3d;position:relative}
 .p2 .shape:after{content:"";position:absolute;inset:18% -18% -18% 18%;background:#bda2d1;z-index:-1}
-.p3{background:#edf0e2}.p3 .weeks{margin-top:12%;display:grid;grid-template-columns:auto 1fr;gap:4% 8%;font-size:2.2cqw}.p3 .bar{height:7%;margin-top:auto;background:#173c33}
-.p4{background:#2748bc;color:#fff}.p4 .box{border:1px solid #9fb2ff;padding:8%;margin-top:12%;min-height:54%;position:relative}.p4 .arrow{position:absolute;right:8%;bottom:10%;font-size:12cqw;color:#f0b944}
-.p5{background:#f6f0e6}.p5 h2{font-family:Georgia,"Times New Roman",serif;font-size:7.2cqw;font-weight:400}.p5 .book{width:48%;height:26%;margin:auto;border-left:3px solid #b6463a;border-bottom:1px solid #111;transform:skewY(8deg)}
+.p3{background:#edf0e2}.p3 .weeks{margin-top:12%;display:grid;grid-template-columns:auto 1fr;gap:4% 8%;font-size:2.05cqw}.p3 .bar{height:7%;margin-top:auto;background:#173c33}
+.p4{background:#2748bc;color:#fff}.p4 .box{border:1px solid #9fb2ff;padding:8%;margin-top:12%;min-height:54%;position:relative}.p4 .arrow{position:absolute;right:8%;bottom:10%;font-size:10cqw;color:#f0b944}
+.p5{background:#f6f0e6}.p5 h2{font-family:Georgia,"Times New Roman",serif;font-size:6.2cqw;font-weight:400}.p5 .book{width:48%;height:26%;margin:auto;border-left:3px solid #b6463a;border-bottom:1px solid #111;transform:skewY(8deg)}
 .p6{background:#efe3df}.p6 .frame{border:1px solid #8b6863;height:55%;margin-top:13%;display:grid;place-items:center}.p6 .mini{width:28%;aspect-ratio:1;border:1px solid #8b6863}
 .p7{background:#f4f0e8}.p7 .circle{width:58%;aspect-ratio:1;border:1px solid #ccc;border-radius:50%;margin:18% auto 0;display:grid;place-items:center}.p7 .flower{width:24%;aspect-ratio:1;border-radius:50%;background:#cf3927;box-shadow:2.2cqw 0 #111,-2.2cqw 0 #111,0 2.2cqw #111,0 -2.2cqw #111}
-.p8{background:#f8dc57}.p8 h2{font-size:8.5cqw}.p8 .flower{width:46%;aspect-ratio:1;border-radius:50%;background:#224f3b;margin:auto;box-shadow:3.4cqw 0 #224f3b,-3.4cqw 0 #224f3b,0 3.4cqw #224f3b,0 -3.4cqw #224f3b}
+.p8{background:#f8dc57}.p8 h2{font-size:7.2cqw}.p8 .flower{width:46%;aspect-ratio:1;border-radius:50%;background:#224f3b;margin:auto;box-shadow:3.4cqw 0 #224f3b,-3.4cqw 0 #224f3b,0 3.4cqw #224f3b,0 -3.4cqw #224f3b}
 .empty{grid-column:1/-1;border:1px dashed var(--line);padding:50px;text-align:center;color:var(--muted)}
 .backdrop{position:fixed;inset:0;background:#1118;z-index:40;display:none}
 .backdrop.show{display:block}
