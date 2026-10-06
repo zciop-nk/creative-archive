@@ -4,425 +4,207 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Creative Archive — Poster Lab</title>
+<link rel="stylesheet" href="./styles/poster-system.css">
 <style>
-:root{
-  --bg:#f2efe7; --paper:#fffdf8; --ink:#111; --muted:#6f6c66; --line:#b9b4aa;
-  --accent:#202020; --soft:#e7e1d5; --radius:4px; --max:1500px;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Segoe UI",Arial,sans-serif}
-button,input,select,textarea{font:inherit;color:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.topbar{height:50px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(242,239,231,.96);backdrop-filter:blur(10px);z-index:20}
-.brand{font-size:12px;font-weight:700;letter-spacing:.02em}
-.topnav{margin-left:auto;display:flex;gap:18px;align-items:center;font-size:12px}
-.topnav button{border:0;background:none;padding:0}
-.topnav .pill{border:1px solid var(--ink);padding:7px 11px;border-radius:999px;background:var(--ink);color:#fff}
-.wrap{max-width:var(--max);margin:auto;padding:18px}
-.mast{display:grid;grid-template-columns:1fr 260px;gap:24px;padding:24px 0 20px;border-bottom:1px solid var(--line)}
-.kicker{font-size:11px;color:#9b5d56;font-weight:700;margin-bottom:10px}
-.title{font-size:clamp(38px,5.5vw,78px);line-height:.93;letter-spacing:-.06em;margin:0;max-width:850px}
-.title em{font-family:Georgia,"Times New Roman",serif;font-weight:400}
-.desc{font-size:12px;line-height:1.65;color:#4e4b46;margin-top:18px;max-width:760px}
-.counter{border-left:1px solid var(--line);padding-left:28px;display:flex;flex-direction:column;justify-content:space-between}
-.counter strong{font-size:88px;line-height:.8;letter-spacing:-.08em}
-.counter small{font-size:10px;line-height:1.45;color:var(--muted)}
-.project-strip{display:flex;gap:0;border-bottom:1px solid var(--line);overflow:auto}
-.project-strip button{border:0;border-right:1px solid var(--line);background:transparent;padding:11px 14px;font-size:11px;white-space:nowrap}
-.project-strip button.active{background:var(--ink);color:#fff}
-.controls{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:12px 0 14px;border-bottom:1px solid var(--line)}
-.search{border:0;border-bottom:1px solid var(--line);background:transparent;padding:10px 0;outline:none;min-width:0}
-.select,.ghost{background:transparent;border:1px solid var(--line);padding:8px 10px;border-radius:2px;font-size:11px}
-.archive-head{display:flex;justify-content:space-between;align-items:end;padding:12px 0 8px}
-.archive-head span{font-size:10px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 14px;padding-bottom:60px}
-.card{min-width:0}
-.thumb{aspect-ratio:4/5;background:#ddd;border:1px solid #c9c3b7;position:relative;overflow:hidden;container-type:inline-size}
-.meta{display:flex;justify-content:space-between;gap:12px;padding-top:7px;font-size:11px}
-.meta b{font-weight:600}
-.meta span{color:var(--muted)}
-.poster{position:absolute;inset:0;padding:8%;display:flex;flex-direction:column}
-.poster small{font-size:2.3cqw;letter-spacing:.04em}
-.poster h2{margin:10% 0 0;font-size:7.1cqw;line-height:.92;letter-spacing:-.05em;overflow-wrap:anywhere}
-.poster p{font-size:2.15cqw;line-height:1.4;margin-top:auto;max-width:72%}
-.p1{background:#f6e6d3}.p1 .hero{height:34%;background:linear-gradient(145deg,#c95d34,#7f2510);margin-top:auto;position:relative}
-.p1 .hero:after{content:"";position:absolute;width:32%;aspect-ratio:1;border-radius:50%;background:#d6b08f;left:34%;top:18%;box-shadow:0 24px 30px #0002}
-.p2{background:#e9e5f0}.p2 h2{font-family:Arial Narrow,Arial,sans-serif;font-size:5.9cqw;letter-spacing:-.035em}
-.p2 .shape{margin:auto;width:45%;aspect-ratio:1;border:1px solid #3b2a3d;position:relative}
-.p2 .shape:after{content:"";position:absolute;inset:18% -18% -18% 18%;background:#bda2d1;z-index:-1}
-.p3{background:#edf0e2}.p3 .weeks{margin-top:12%;display:grid;grid-template-columns:auto 1fr;gap:4% 8%;font-size:2.05cqw}.p3 .bar{height:7%;margin-top:auto;background:#173c33}
-.p4{background:#2748bc;color:#fff}.p4 .box{border:1px solid #9fb2ff;padding:8%;margin-top:12%;min-height:54%;position:relative}.p4 .arrow{position:absolute;right:8%;bottom:10%;font-size:10cqw;color:#f0b944}
-.p5{background:#f6f0e6}.p5 h2{font-family:Georgia,"Times New Roman",serif;font-size:6.2cqw;font-weight:400}.p5 .book{width:48%;height:26%;margin:auto;border-left:3px solid #b6463a;border-bottom:1px solid #111;transform:skewY(8deg)}
-.p6{background:#efe3df}.p6 .frame{border:1px solid #8b6863;height:55%;margin-top:13%;display:grid;place-items:center}.p6 .mini{width:28%;aspect-ratio:1;border:1px solid #8b6863}
-.p7{background:#f4f0e8}.p7 .circle{width:58%;aspect-ratio:1;border:1px solid #ccc;border-radius:50%;margin:18% auto 0;display:grid;place-items:center}.p7 .flower{width:24%;aspect-ratio:1;border-radius:50%;background:#cf3927;box-shadow:2.2cqw 0 #111,-2.2cqw 0 #111,0 2.2cqw #111,0 -2.2cqw #111}
-.p8{background:#f8dc57}.p8 h2{font-size:7.2cqw}.p8 .flower{width:46%;aspect-ratio:1;border-radius:50%;background:#224f3b;margin:auto;box-shadow:3.4cqw 0 #224f3b,-3.4cqw 0 #224f3b,0 3.4cqw #224f3b,0 -3.4cqw #224f3b}
+:root{--bg:#eeeae1;--paper:#f7f4ed;--ink:#111;--muted:#736e65;--line:#bcb6aa}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.topbar{height:50px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(238,234,225,.96);backdrop-filter:blur(10px);z-index:30}
+.brand{font-size:11px;font-weight:750}.topnav{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:11px}.topnav button,.topnav a{border:0;background:none;padding:0}.topnav .pill{background:#111;color:#fff;border-radius:999px;padding:8px 11px}
+.wrap{max-width:1540px;margin:auto;padding:16px 20px 70px}
+.hero{border-bottom:1px solid var(--line)}
+.hero-top{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:4px 0 11px;font-size:10px;color:var(--muted)}
+.hero-main{display:grid;grid-template-columns:1fr 250px;gap:30px;padding:20px 0}
+.kicker{font-size:10px;color:#a76e63;font-weight:700;margin-bottom:10px}
+h1{font-size:clamp(44px,5vw,74px);line-height:.93;letter-spacing:-.06em;margin:0}.desc{font-size:12px;line-height:1.65;max-width:760px;color:#4e4a44;margin-top:17px}
+.stat{border-left:1px solid var(--line);padding-left:28px;display:flex;flex-direction:column;justify-content:space-between}.stat strong{font-size:86px;line-height:.8;letter-spacing:-.075em}.stat small{font-size:10px;line-height:1.5;color:var(--muted)}
+.project-tabs{display:flex;border-bottom:1px solid var(--line);overflow:auto}.project-tabs button{background:none;border:0;border-right:1px solid var(--line);padding:10px 12px;font-size:10px;white-space:nowrap}.project-tabs button.active{background:#111;color:#fff}
+.controls{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.search{border:0;border-bottom:1px solid var(--line);background:transparent;padding:9px 0;outline:0;min-width:0}.select,.ghost{border:1px solid var(--line);background:transparent;padding:8px 9px;border-radius:0;font-size:10px}
+.archive-head{display:flex;justify-content:space-between;align-items:end;padding:12px 0 8px}.archive-head b{font-size:12px}.archive-head span{font-size:10px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 15px}.card{min-width:0;position:relative}.card .poster-shell{width:100%}.meta{display:flex;justify-content:space-between;gap:12px;padding-top:7px;font-size:10px}.meta b{font-weight:650}.meta span{color:var(--muted);text-align:right}.qa-badge{position:absolute;top:7px;right:7px;z-index:4}
 .empty{grid-column:1/-1;border:1px dashed var(--line);padding:50px;text-align:center;color:var(--muted)}
-.backdrop{position:fixed;inset:0;background:#1118;z-index:40;display:none}
-.backdrop.show{display:block}
-.panel{position:fixed;right:-760px;top:0;bottom:0;width:min(720px,96vw);background:#f8f6f1;z-index:50;transition:.24s ease;padding:18px;overflow:auto;border-left:1px solid var(--line)}
-.panel.open{right:0}
-.panel-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
-.panel-head button{border:0;background:none}
-.preview{background:#d7d3cb;padding:28px;margin-top:16px;display:grid;place-items:center}
-.preview .thumb{width:min(520px,100%);aspect-ratio:4/5}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
-.actions button{border:1px solid var(--line);background:var(--paper);padding:8px 10px;border-radius:2px;font-size:11px}
-.promptbox{border-top:1px solid var(--line);padding-top:14px}
-.promptbox h4{margin:0 0 6px;font-size:11px}
-.promptbox pre{margin:0 0 14px;background:#eee9df;border:1px solid #d7d0c4;padding:12px;white-space:pre-wrap;line-height:1.55;font-family:inherit;font-size:12px}
-.modal{position:fixed;inset:0;background:#1118;z-index:60;display:none;place-items:center;padding:20px}
-.modal.show{display:grid}
-.modal-card{width:min(620px,100%);background:#f8f6f1;border:1px solid var(--line);padding:18px}
-.modal-card h3{font-size:26px;letter-spacing:-.04em;margin:0 0 16px}
-.field{margin-bottom:12px}
-.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}
-.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#fff;padding:10px;border-radius:0}
-.field textarea{min-height:130px;resize:vertical}
-.modal-actions{display:flex;justify-content:flex-end;gap:8px}
-.modal-actions button{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:0}
-.modal-actions .primary{background:#111;color:#fff;border-color:#111}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.mast{grid-template-columns:1fr}.counter{border-left:0;border-top:1px solid var(--line);padding:18px 0 0;flex-direction:row}.counter strong{font-size:56px}}
-@media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}.topnav .hide-sm{display:none}.title{font-size:48px}}
-
-/* --- poster refinement v3: real editorial motifs + media areas --- */
-.thumb{container-type:inline-size}
-.poster{padding:7.5%;overflow:hidden}
-.poster .eyebrow{font-size:2.15cqw;font-weight:700;letter-spacing:.025em}
-.poster .ttl{font-size:7.4cqw;line-height:.94;letter-spacing:-.055em;margin:8% 0 0;font-weight:800}
-.poster .sub{font-size:2.05cqw;line-height:1.35;margin-top:auto}
-.poster .copy{font-size:1.95cqw;line-height:1.5;color:inherit;opacity:.82}
-.poster .metaLines{display:grid;grid-template-columns:auto 1fr;gap:1.2cqw 2.5cqw;font-size:1.8cqw;line-height:1.3}
-.poster svg{display:block;width:100%;height:100%}
-.p1 .photoArea{height:36%;margin-top:auto;background:#a74722}
-.p1 .copy{margin-top:5%}
-.p2 .motifBox{width:50%;aspect-ratio:1;margin:17% auto 0}
-.p2 .ttl{font-size:6.2cqw}
-.p3 .metaLines{margin-top:11%}
-.p3 .bar{height:7%;margin-top:auto;background:#1d493d}
-.p4 .frame{border:1px solid rgba(255,255,255,.5);margin-top:13%;padding:8%;min-height:55%;position:relative}
-.p4 .ttl{font-size:7cqw;max-width:82%}
-.p4 .arrowSvg{position:absolute;right:8%;bottom:10%;width:28%;height:22%}
-.p5 .ttl{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:6.6cqw}
-.p5 .bookSvg{width:62%;height:28%;margin:17% auto 0}
-.p6 .frame{border:1px solid #9e817b;margin-top:13%;padding:7%;height:59%;position:relative}
-.p6 .ttl{font-size:6cqw;max-width:82%}
-.p6 .windowSvg{position:absolute;right:10%;bottom:10%;width:26%;aspect-ratio:1}
-.p7 .circleSvg{width:66%;aspect-ratio:1;margin:10% auto 0}
-.p7 .ttl{font-size:5.5cqw;text-align:center;margin-top:8%}
-.p8 .ttl{font-size:6.3cqw}
-.p8 .flowerSvg{width:58%;aspect-ratio:1;margin:auto}
-.p9{background:#ebe6f3}.p9 .ttl{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:6.1cqw}.p9 .waveSvg{width:64%;height:25%;margin:17% auto 0}
-
-
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-.poster{font-family:Pretendard,"Pretendard Variable","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
-.poster .micro{font-size:1.55cqw;line-height:1.4;letter-spacing:.02em}
-.poster .rule{height:1px;background:currentColor;opacity:.35}
-.poster .footerRow{margin-top:auto;display:flex;justify-content:space-between;gap:2cqw;align-items:flex-end;font-size:1.55cqw;line-height:1.3}
-.poster .footerRow span:last-child{text-align:right;opacity:.72}
-.poster .photoArea{overflow:hidden;position:relative}
-.poster .photoArea img{width:100%;height:100%;object-fit:cover;display:block}
-.poster .photoArea:after{content:"";position:absolute;inset:0;border:1px solid rgba(17,17,17,.08);pointer-events:none}
-.p1 .photoArea{height:35%;margin-top:8%}
-.p1 .ttl{max-width:86%}
-.p1 .caseNo{display:grid;grid-template-columns:auto 1fr;gap:2cqw;margin-top:6%;align-items:end}
-.p1 .caseNo strong{font-size:6.2cqw;line-height:.8;letter-spacing:-.07em}
-.p1 .caseNo span{font-size:1.6cqw;line-height:1.4;max-width:70%}
-.p2 .koreanSub{font-family:"Noto Serif KR","Batang",serif;font-size:4.5cqw;line-height:1.05;margin-top:4%;letter-spacing:-.045em}
-.p2 .motifBox{margin-top:13%}
-.p3 .ttl{max-width:88%}.p3 .copy{margin-top:5%;max-width:72%}.p3 .metaLines{border-top:1px solid rgba(17,17,17,.18);padding-top:5%;margin-top:8%}
-.p4 .microNote{position:absolute;left:8%;bottom:8%;font-size:1.5cqw;max-width:45%;line-height:1.45}.p4 .arrowSvg{width:31%;height:25%}
-.p5 .photoArea{height:31%;margin-top:11%}.p5 .photoArea img{filter:saturate(.82) contrast(.92)}.p5 .ttl{max-width:78%}
-.p6 .frame{height:60%}.p6 .frame .smallCopy{position:absolute;left:7%;bottom:9%;font-size:1.55cqw;line-height:1.45;max-width:45%}
-.p7 .photoCircle{width:61%;aspect-ratio:1;margin:10% auto 0;border-radius:50%;overflow:hidden;border:1px solid #d2cec5;padding:7%;}.p7 .photoCircle img{width:100%;height:100%;object-fit:cover;border-radius:50%}.p7 .ttl{margin-top:7%}
-.p8 .eventMeta{display:grid;grid-template-columns:auto 1fr;gap:1cqw 2cqw;font-size:1.55cqw;line-height:1.35;margin-top:4%}.p8 .flowerSvg{width:54%}
-.p9 .ttl{max-width:80%}.p9 .waveSvg{margin-top:12%}.p9 .note{font-size:1.65cqw;line-height:1.5;margin-top:4%;max-width:70%}
-.p10{background:#f4f0e6}.p10 .ttl{font-size:6.9cqw;max-width:75%}.p10 .photoArea{height:35%;margin-top:7%}.p10 .receipt{margin-top:6%;display:grid;grid-template-columns:1fr auto;gap:1.2cqw 3cqw;font-size:1.55cqw;line-height:1.25;border-top:1px solid #bdb7aa;padding-top:4%}.p10 .receipt b{font-weight:700}.p10 .receipt span:nth-child(even){text-align:right}
-.refList{margin:0;padding-left:18px;line-height:1.7;font-size:12px}.refList a{text-decoration:underline;text-underline-offset:2px}
-.assetCard{border:1px solid #d7d0c4;background:#f2ede4;padding:11px;font-size:12px;line-height:1.6;margin-bottom:14px}
-.assetCard a{text-decoration:underline;text-underline-offset:2px}
-
-
-/* --- Korean typography rules --- */
-.poster,.poster *{word-break:keep-all;overflow-wrap:normal;hyphens:none}
-.poster .ttl{
-  word-break:keep-all;
-  overflow-wrap:normal;
-  text-wrap:balance;
-  line-break:strict;
-  letter-spacing:-.055em;
-}
-.poster .copy,.poster .note,.poster .smallCopy,.poster .micro,.poster .footerRow,.poster .metaLines{
-  word-break:keep-all;
-  line-break:strict;
-}
-.poster .kr-sans{font-family:Pretendard,"Pretendard Variable","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
-.poster .kr-serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-weight:500;letter-spacing:-.035em}
-.p1 .ttl{font-size:6.5cqw;line-height:1.06}
-.p3 .ttl{font-size:6.4cqw;line-height:1.04}
-.p4 .ttl{font-size:6.2cqw;line-height:1.05;max-width:86%}
-.p5 .ttl{font-size:5.9cqw;line-height:1.1}
-.p6 .ttl{font-size:5.5cqw;line-height:1.08;max-width:90%}
-.p7 .ttl{font-size:5.2cqw;line-height:1.12;max-width:92%;margin-left:auto;margin-right:auto}
-.p8 .ttl{font-size:5.9cqw;line-height:1.05}
-.p9 .ttl{font-size:5.5cqw;line-height:1.12;max-width:90%}
-.p10 .ttl{font-size:6.5cqw;line-height:1.05}
-
-
-/* --- composition cleanup v4: one dominant visual, safe zones --- */
-.p1 .caseNo{grid-template-columns:8.5cqw 1fr;align-items:start;margin-top:5%}
-.p1 .caseNo strong{font-size:5.4cqw;line-height:.9}
-.p1 .caseNo span{font-size:1.55cqw;line-height:1.55;max-width:82%;padding-top:.2cqw}
-.p1 .photoArea{height:34%;margin-top:6%}
-
-.p2 .koreanSub{font-size:3.9cqw;line-height:1.12;margin-top:3%}
-.p2 .moduleMap{width:58%;margin:13% auto 0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;aspect-ratio:1;border:1px solid #4d4257;position:relative}
-.p2 .moduleMap span{display:flex;align-items:flex-end;padding:6%;font-size:1.45cqw;letter-spacing:.04em;border-right:1px solid #4d4257;border-bottom:1px solid #4d4257}
-.p2 .moduleMap span:nth-child(2){border-right:0}
-.p2 .moduleMap span:nth-child(3){border-bottom:0}
-.p2 .moduleMap span:nth-child(4){border-right:0;border-bottom:0;background:#b59bc9;color:#2d2335;align-items:center;justify-content:center;font-size:1.65cqw;font-weight:700}
-.p2 .moduleMap:after{content:"";position:absolute;width:30%;height:1px;background:#4d4257;right:-18%;top:49%}
-
-.p5 .photoArea{height:35%;margin-top:10%}
-.p5 .photoArea img{object-position:center 55%}
-.p5 .workshopInfo{margin-top:8%;display:grid;grid-template-columns:auto 1fr;gap:1.15cqw 3cqw;font-size:1.55cqw;line-height:1.35;border-top:1px solid #c6bfb3;padding-top:5%}
-.p5 .workshopInfo b{font-weight:700}
-
-.p6 .frame{height:61%;display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:auto 1fr auto;column-gap:8%;padding:8%}
-.p6 .frame .ttl{grid-column:1/2;grid-row:1;margin:0;align-self:start;max-width:100%}
-.p6 .frame .smallCopy{position:static;grid-column:1/2;grid-row:3;align-self:end;max-width:100%;font-size:1.5cqw;line-height:1.5}
-.p6 .windowSvg{position:static;grid-column:2/3;grid-row:2/4;width:72%;aspect-ratio:1;align-self:end;justify-self:end;margin:0 0 2% 0}
-
-.p9 .note{margin-top:3%;max-width:66%}
-.p9 .waveCluster{width:66%;height:24%;margin:12% auto 0;position:relative}
-.p9 .waveSvg{width:100%;height:100%;margin:0}
-.p9 .waveCluster .dot{position:absolute;width:5.5cqw;aspect-ratio:1;border-radius:50%;background:#6e4b91;right:7%;top:2%}
-.p9 .thankMeta{margin-top:8%;display:grid;grid-template-columns:auto 1fr;gap:1cqw 3cqw;font-size:1.5cqw;line-height:1.35}
-
-.p10 .photoArea{height:31%;margin-top:6%;background:#e5ddd0;padding:2.2%}
-.p10 .photoArea img{object-fit:contain;object-position:center center}
-.p10 .receipt{margin-top:4.5%;padding-top:4%;gap:1cqw 3cqw}
-.p10 .bakeryNote{margin-top:4%;font-size:1.5cqw;line-height:1.45;max-width:70%;color:#49443e}
-.p10 .footerRow{margin-top:6%}
-
+.backdrop{position:fixed;inset:0;background:#1118;display:none;z-index:50}.backdrop.show{display:block}
+.drawer{position:fixed;right:-780px;top:0;bottom:0;width:min(740px,96vw);background:#f8f5ee;border-left:1px solid var(--line);z-index:60;transition:.22s;padding:18px;overflow:auto}.drawer.open{right:0}
+.drawer-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:12px}.drawer-head small{font-size:10px;color:var(--muted)}.drawer-head h2{font-size:28px;line-height:1.08;letter-spacing:-.045em;margin:5px 0 0}.drawer-head button{border:0;background:none}
+.preview{background:#d8d3ca;padding:24px;margin-top:16px;display:grid;place-items:center}.preview .poster-shell{width:min(520px,100%)}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 18px}.actions button{border:1px solid var(--line);background:#fff;padding:8px 10px;font-size:10px;border-radius:0}.actions button.dark{background:#111;color:#fff;border-color:#111}
+.info-block{border-top:1px solid var(--line);padding-top:13px;margin-top:13px}.info-block h4{font-size:10px;margin:0 0 7px}.info-block pre{white-space:pre-wrap;word-break:break-word;background:#eee8dd;border:1px solid #d6cfc2;padding:11px;margin:0 0 13px;font:11px/1.6 Pretendard,sans-serif}.ref-list{margin:0;padding-left:17px;font-size:11px;line-height:1.7}.ref-list a{text-decoration:underline;text-underline-offset:2px}.asset{background:#eee8dd;border:1px solid #d6cfc2;padding:11px;font-size:11px;line-height:1.6;margin-bottom:13px}.asset a{text-decoration:underline}
+.modal{position:fixed;inset:0;background:#1118;z-index:70;display:none;place-items:center;padding:20px}.modal.show{display:grid}.modal-card{width:min(620px,100%);background:#f8f5ee;border:1px solid var(--line);padding:18px}.modal-card h3{font-size:27px;letter-spacing:-.045em;margin:0 0 16px}.field{margin-bottom:11px}.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fff;padding:10px;border-radius:0}.field textarea{height:120px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:7px}.modal-actions button{border:1px solid var(--line);background:#fff;padding:8px 11px}.modal-actions .primary{background:#111;color:#fff;border-color:#111}
+.export-stage{position:fixed;left:-100000px;top:0;width:1080px;height:1350px;pointer-events:none}.export-stage .poster-shell{width:1080px;height:1350px}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero-main{grid-template-columns:1fr}.stat{border-left:0;border-top:1px solid var(--line);padding:15px 0 0;flex-direction:row}.stat strong{font-size:58px}}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}.topnav .hide-sm{display:none}}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="brand">DESIGN PRACTICE / CREATIVE ARCHIVE</div>
   <nav class="topnav">
-    <button class="hide-sm" data-cat="people">인물/애니</button>
-    <button class="hide-sm" data-cat="poster"><b>포스터</b></button>
-    <button class="hide-sm" data-cat="ppt">PPT</button>
-    <button class="hide-sm" data-cat="uiux">UIUX</button><a class="hide-sm" href="./review-board.html" style="font-size:12px">검토 보드</a>
+    <button class="hide-sm" data-menu="people">인물/애니</button>
+    <button class="hide-sm" data-menu="poster"><b>포스터</b></button>
+    <button class="hide-sm" data-menu="ppt">PPT</button>
+    <button class="hide-sm" data-menu="uiux">UIUX</button>
+    <a class="hide-sm" href="./review-board.html">검토 보드</a>
     <button id="newProject">+ 프로젝트</button>
     <button id="chatCmd" class="pill">ChatGPT 명령</button>
   </nav>
 </header>
 
 <main class="wrap">
-  <section class="mast">
-    <div>
-      <div class="kicker">일상에서 시작한 편집 디자인 실험들</div>
-      <h1 class="title">포스터를 쌓고,<br><em>규칙을 남깁니다.</em></h1>
-      <p class="desc">프로젝트마다 참고자료에서 추출한 디자인 시스템과 실제 생성 프롬프트를 함께 보관합니다. 결과물은 다시 쓰고, 변형하고, 다음 프로젝트의 출발점으로 재사용할 수 있습니다.</p>
-    </div>
-    <div class="counter">
-      <strong id="totalCount">008</strong>
-      <small>POSTER ARCHIVE<br>현재 포스터 프로젝트부터 검증 중</small>
+  <section class="hero">
+    <div class="hero-top"><span>DESIGN PRACTICE / POSTER ENGINE</span><span>RULE-BASED GENERATION · KOREAN TYPOGRAPHY · QA</span></div>
+    <div class="hero-main">
+      <div><div class="kicker">개별 포스터 수정이 아니라, 규칙을 설계합니다</div><h1>한글 포스터를<br>시스템으로 만듭니다.</h1><p class="desc">프로젝트 규격 + 콘텐츠 + 템플릿 + 한글 타이포 엔진 + 자산 선택 + QA를 조합합니다. 새 작품을 추가할 때는 포스터 HTML을 직접 고치지 않고 데이터만 등록합니다.</p></div>
+      <div class="stat"><strong id="totalCount">000</strong><small>POSTERS<br><span id="passSummary">QA CHECKING</span></small></div>
     </div>
   </section>
-
-  <div id="projectStrip" class="project-strip"></div>
-
+  <div id="projectTabs" class="project-tabs"></div>
   <div class="controls">
-    <input id="search" class="search" placeholder="제목, 번호, 태그로 찾기">
+    <input id="search" class="search" placeholder="번호, 제목, 태그로 찾기">
     <select id="projectFilter" class="select"></select>
+    <select id="statusFilter" class="select"><option value="all">전체 상태</option><option value="fav">즐겨찾기</option><option value="approved">승인</option><option value="revise">수정 필요</option></select>
     <button id="newPoster" class="ghost">+ 새 포스터 프로젝트</button>
   </div>
-
-  <div class="archive-head">
-    <b>POSTER ARCHIVE</b>
-    <span id="resultCount"></span>
-  </div>
+  <div class="archive-head"><b>POSTER ARCHIVE</b><span id="resultCount"></span></div>
   <section id="grid" class="grid"></section>
 </main>
 
 <div id="backdrop" class="backdrop"></div>
-<aside id="panel" class="panel">
-  <div class="panel-head">
-    <div><small id="panelProject"></small><h2 id="panelTitle" style="margin:4px 0 0"></h2></div>
-    <button id="closePanel">닫기 ×</button>
-  </div>
-  <div id="panelBody"></div>
-</aside>
-
-<div id="modal" class="modal">
-  <div class="modal-card">
-    <h3 id="modalTitle">새 포스터 프로젝트</h3>
-    <div id="modalBody"></div>
-  </div>
-</div>
+<aside id="drawer" class="drawer"><div class="drawer-head"><div><small id="drawerProject"></small><h2 id="drawerTitle"></h2></div><button id="closeDrawer">닫기 ×</button></div><div id="drawerBody"></div></aside>
+<div id="modal" class="modal"><div class="modal-card"><h3 id="modalTitle"></h3><div id="modalBody"></div></div></div>
+<div id="exportStage" class="export-stage"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-<script>
-window.ARCHIVE_DATA={
-  repository:"zciop-nk/creative-archive",
-  projects:[
-    {
-      id:"poster-001",
-      category:"poster",
-      name:"Everyday Editorial",
-      description:"한글 편집 포스터·초대장·전시 그래픽의 시각 문법을 일상 소재로 재구성",
-      referenceSources:[
-        {title:"Opening the Storerooms — DOTS / National Gugak Center",url:"https://www.behance.net/gallery/134490105/Opening-the-Storerooms-Initial-Showing-of-Donations"},
-        {title:"Ancient Futures, Whang Chongnye — Chuigraf",url:"https://www.behance.net/gallery/48581689/Ancient-Futures-Whang-Chongnye"},
-        {title:"Monami: Concept store invitation",url:"https://www.behance.net/gallery/63155499/Monami-Concept-store-invitation"},
-        {title:"Pinterest — 한글 포스터 디자인",url:"https://in.pinterest.com/rayouo47/%ED%95%9C%EA%B8%80-%ED%8F%AC%EC%8A%A4%ED%84%B0-%EB%94%94%EC%9E%90%EC%9D%B8/"},
-        {title:"Pinterest — Typography_Korean_한글",url:"https://www.pinterest.com/design_x/typography_korean_%ED%95%9C%EA%B8%80/"}
-      ],
-      designSystem:{
-        canvas:"1080x1350",
-        grid:"12-column editorial grid",
-        typography:"Korean-first hierarchy: headline 1~3 lines / subtitle / body / micro metadata; sans for modern clarity, serif for invitation/editorial tone",
-        koreanTypography:{headlineTracking:"-0.03em ~ -0.06em",headlineLineHeight:"1.02 ~ 1.12",bodyLineHeight:"1.45 ~ 1.65",wordBreak:"keep-all",rule:"Never split a Korean word or leave a single syllable orphan on the next line. Control headline line breaks intentionally by phrase."},
-        palette:"warm paper neutrals + one deliberate accent",
-        imageTreatment:"real still-life photography cropped as editorial material; no decorative stock-photo framing",
-        spacing:"large outer margin / deliberate asymmetric balance / micro-detail density near edges",
-        motifs:"line-work, modular grids, book/window/flower/wave/arrow symbols",
-        avoid:["SaaS card layout","heavy drop shadow","random gradients","generic AI decoration","oversized rounded UI","one-shape-only posters"]
-      },
-      projectPrompt:"한글 편집 포스터를 만든다. 1080x1350 세로 비율, 12-column 기반의 명확한 그리드, 큰 한글 제목과 작은 메타데이터, 실제 인쇄물 같은 정보 밀도를 사용한다. 이미지가 필요한 포스터는 정물 사진을 그래픽 재료처럼 크롭하고, 이미지가 없는 포스터는 단순 원/사각형 하나가 아니라 선형·모듈형 SVG 모티프와 정보 구조를 함께 사용한다. 결과마다 제목/서브카피/설명/날짜·장소·호수 같은 작은 정보가 실제 포스터처럼 정돈되어 있어야 한다. 한글 제목은 음절 단위로 임의 줄바꿈하지 말고 의미 단위로 직접 줄을 설계한다. 마지막 한 글자만 다음 줄로 떨어지는 고아 글자를 금지한다. 고딕은 현대적·명료한 정보 전달, 명조는 초대장·감성 편집에 사용하며 제목 자간은 약간 좁게, 본문 행간은 충분히 확보한다.",
-      works:[
-        {id:"001",title:"모서리 커피 브랜드 연구",titleLines:["모서리 커피","브랜드 연구"],typeStyle:"sans",type:"poster",variant:"p1",tags:["brand","coffee","photo-editorial"],subtitle:"FICTIONAL CASE STUDY / 01",description:["A CORNER OF EVERYDAY","작은 동네 카페의 브랜드 리뉴얼을 가정한 편집 연구"],meta:["01 SEASON SERIES","2026 / SEOUL"],asset:{src:"https://images.unsplash.com/photo-1769138886383-e0aabad94205?auto=format&fit=crop&w=1400&q=88",alt:"라테 아트 커피와 원두",credit:"sofia inductgroup / Unsplash",source:"https://unsplash.com/photos/a-cup-of-coffee-with-latte-art-and-scattered-beans-U6pgvTBezEc",license:"Unsplash License"},references:["Opening the Storerooms","Pinterest — 한글 포스터 디자인"],prompt:"가상 커피 브랜드 케이스스터디 표지. 따뜻한 살구-크림 종이 톤. 상단 작은 시리즈 아이브로우, 중상단 강한 한글 제목, 숫자 01과 작은 브랜드 설명, 하단 1/3에는 실제 커피·원두 정물 사진을 넓게 크롭. 사진 아래 미세한 날짜/호수/지역 메타를 배치한다."},
-        {id:"002",title:"Between Thinking & Making",type:"poster",variant:"p2",tags:["newsletter","typography","grid"],subtitle:"STUDIO LETTER / NO.011",description:["이번 달, 우리가 본 것","생각과 제작 사이의 기록"],meta:["ISSUE 011","OCT 2026"],references:["Pinterest — Typography_Korean_한글","Ancient Futures, Whang Chongnye"],prompt:"스튜디오 뉴스레터 헤더. 옅은 라일락 종이 배경. 상단 좁은 영문 산세리프 헤드라인, 아래 한글 세리프 부제, 중앙에는 겹치는 정사각형 모듈 그리드. 하단에 호수·발행일·스튜디오 이름을 8~10pt 느낌의 미세 정보로 정렬한다."},
-        {id:"003",title:"다음 네 주를 함께 그립니다",titleLines:["다음 네 주를","함께 그립니다."],typeStyle:"sans",type:"poster",variant:"p3",tags:["roadmap","information","editorial"],subtitle:"PROJECT ROADMAP / SAMPLE",description:["한 달 프로젝트의 흐름을 한 장에 정리합니다."],meta:["WEEK 01–04","PROJECT 03"],references:["Opening the Storerooms","Pinterest — 한글 포스터 디자인"],prompt:"프로젝트 로드맵 포스터. 아주 옅은 녹색 종이 톤. 상단 큰 한글 제목과 한 줄 설명. 중단에는 WEEK 01~04를 번호/주제/작은 설명의 3단 정보 계층으로 구성. 하단 짙은 녹색 바와 아주 작은 프로젝트 코드·날짜를 둔다."},
-        {id:"004",title:"다음 프로젝트를 이야기해 볼까요",titleLines:["다음 프로젝트를","이야기해 볼까요"],typeStyle:"sans",type:"poster",variant:"p4",tags:["contact","bold","graphic"],subtitle:"NEW BUSINESS / CONTACT CARD",description:["문의 한 번의 시작","다음 프로젝트의 첫 장면"],meta:["HELLO@ARCHIVE.KR","SEOUL / 2026"],references:["Monami: Concept store invitation","Pinterest — Typography_Korean_한글"],prompt:"코발트 블루 연락처 포스터. 상단 작은 시리즈 표기. 화면 안쪽 얇은 라인 프레임. 프레임 내부 큰 한글 문장을 좌상단에 두고, 우하단에는 두꺼운 노란 화살표 SVG. 프레임 하단에는 이메일·지역·응답시간을 작은 텍스트로 정렬한다."},
-        {id:"005",title:"좋은 브리프를 쓰는 연습",titleLines:["좋은 브리프를","쓰는 연습"],typeStyle:"serif",type:"poster",variant:"p5",tags:["workshop","serif","photo"],subtitle:"WORDS BEFORE FORMS",description:["문장을 다듬으면 형태가 따라옵니다."],meta:["11.28 SAT","WORKSHOP 05"],asset:{src:"https://images.unsplash.com/photo-1643821042859-39fc6e13d2fd?auto=format&fit=crop&w=1400&q=88",alt:"책과 커피가 있는 미니멀 정물",credit:"Mary Skrynnikova / Unsplash",source:"https://unsplash.com/photos/a-table-topped-with-a-cup-of-coffee-and-two-candles-XqinY-iT6vo",license:"Unsplash License"},references:["Ancient Futures, Whang Chongnye","Pinterest — 한글 포스터 디자인"],prompt:"브리프 워크숍 포스터. 따뜻한 크림 배경과 세리프 한글 제목. 중단의 책·커피 정물 사진을 유일한 메인 비주얼로 사용하고 별도의 책 그래픽은 넣지 않는다. 사진 아래에 날짜·대상·신청 링크를 작은 정보 그리드로 정리한다."},
-        {id:"006",title:"새로운 집에 당신을 초대해요",titleLines:["새로운 집에","당신을 초대해요"],typeStyle:"sans",type:"poster",variant:"p6",tags:["invitation","minimal","linework"],subtitle:"HOUSEWARMING / OPEN HOUSE",description:["작은 집들이에 초대합니다."],meta:["11.21 SAT 17:00","MAPO / SEOUL"],references:["Monami: Concept store invitation","Pinterest — 한글 포스터 디자인"],prompt:"집들이 초대장. 로즈 베이지 배경과 얇은 프레임. 프레임을 제목·정보·아이콘의 세 안전 영역으로 분리한다. 제목은 좌상단, 날짜/주소/RSVP는 좌하단, 작은 창문 SVG는 우하단에 두며 서로 겹치지 않는다."},
-        {id:"007",title:"함께 맞이할 첫 번째 계절",titleLines:["함께 맞이할","첫 번째 계절"],typeStyle:"serif",type:"poster",variant:"p7",tags:["wedding","invitation","photo"],subtitle:"SMALL WEDDING INVITATION",description:["우리의 첫 계절을 함께 맞이해 주세요."],meta:["2026.11.28 12:00","SEOUL"],asset:{src:"https://images.unsplash.com/photo-1597768309312-97773de3239a?auto=format&fit=crop&w=1200&q=88",alt:"투명 유리병의 흰 꽃",credit:"Jessica Mangano / Unsplash",source:"https://unsplash.com/photos/white-flower-in-clear-glass-vase-DyCL-TWejdQ",license:"Unsplash License"},references:["Monami: Concept store invitation","Opening the Storerooms"],prompt:"작은 결혼식 초대장. 오프화이트 종이 톤. 상단 작은 날짜/이슈 표기, 중앙에 얇은 원형 프레임 안으로 흰 꽃 정물 사진을 원형 크롭. 그 아래 세리프 계열의 한글 제목, 하단에 신랑·신부/날짜/장소/초대 문장을 미세 활자로 정리한다."},
-        {id:"008",title:"좋은 날은 같이 보내요",titleLines:["좋은 날은","같이 보내요."],typeStyle:"sans",type:"poster",variant:"p8",tags:["birthday","graphic","motif"],subtitle:"BIRTHDAY GATHERING",description:["ONE MORE GOOD YEAR"],meta:["11.07 SAT 18:00","GOOD CAKE / GOOD PEOPLE"],references:["Pinterest — 한글 포스터 디자인","Pinterest — Typography_Korean_한글"],prompt:"생일 파티 초대장. 버터 옐로 종이 톤. 상단 굵은 한글 제목과 짧은 영문 카피. 중앙에 짙은 녹색의 6잎 꽃 모티프와 노란 중심점을 크게 배치. 하단에는 날짜·시간·장소·드레스코드를 작은 정보 블록으로 구성한다."},
-        {id:"009",title:"고마운 마음을 적어 보냅니다",titleLines:["고마운 마음을","적어 보냅니다."],typeStyle:"serif",type:"poster",variant:"p9",tags:["thankyou","graphic","serif"],subtitle:"FOR ALL THE LITTLE THINGS",description:["짧은 문장 하나를 오래 남기는 카드"],meta:["THANK YOU","VOL.09"],references:["Pinterest — 한글 포스터 디자인","Monami: Concept store invitation"],prompt:"감사 카드 포스터. 옅은 라일락 배경. 한글 세리프 제목을 왼쪽 상단에 배치하고, 중앙에는 3~4개의 얇은 웨이브 라인과 보라색 점 모티프. 하단에는 작은 감사 문장과 보내는 이 이름/날짜를 정렬한다."},
-        {id:"010",title:"아침을 굽습니다",titleLines:["아침을 굽습니다."],typeStyle:"sans",type:"poster",variant:"p10",tags:["bakery","photo-editorial","menu"],subtitle:"BAKERY MORNING / DAILY 01",description:["매일 아침 8시, 오늘의 첫 빵을 꺼냅니다."],meta:["CROISSANT 4.8","COFFEE 3.5"],asset:{src:"https://images.unsplash.com/photo-1658740877563-d4e3d31c2b4d?auto=format&fit=crop&w=1400&q=88",alt:"크루아상 정물 사진",credit:"kimia kazemi / Unsplash",source:"https://unsplash.com/photos/a-close-up-of-some-food-5bsV1L0o4Fw",license:"Unsplash License"},references:["Pinterest — 한글 포스터 디자인","Opening the Storerooms"],prompt:"베이커리 데일리 포스터. 크림 종이 배경, 상단 작은 영문 아이브로우, 큰 한글 제목 '아침을 굽습니다'. 중단에는 크루아상 사진을 4:3 정도로 단정하게 크롭하고, 하단은 영수증/메뉴처럼 품목·가격·굽는 시간·오늘의 수량을 미세한 행으로 정렬한다."}
-      ]
-    }
-  ]
-};
+<script type="module">
+import { PROJECT_SPECS } from "./data/project-specs.js";
+import { POSTER_WORKS } from "./data/poster-content.js";
+import { renderPoster } from "./engine/renderer.js";
+import { domQA } from "./engine/qa.js";
 
 const $=s=>document.querySelector(s);
-const esc=s=>(s??"").replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));
+const esc=s=>(s??"").toString().replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));
 let activeProject="all",selected=null;
+const state=JSON.parse(localStorage.getItem("creativeArchiveState")||"{}");
+const saveState=()=>localStorage.setItem("creativeArchiveState",JSON.stringify(state));
+const projects=Object.values(PROJECT_SPECS);
+const getProject=id=>PROJECT_SPECS[id];
+const getState=id=>state[id]||{fav:false,status:""};
 
-function allPosterProjects(){return ARCHIVE_DATA.projects.filter(p=>p.category==="poster")}
-function allWorks(){
-  return allPosterProjects().flatMap(p=>p.works.map(w=>({p,w})));
-}
-function posterHTML(w){
-  const e='<div class="eyebrow">OUR ARCHIVE · '+String(w.id).padStart(3,"0")+'</div>';
-  const titleClass=(w.typeStyle==='serif'?'kr-serif':'kr-sans');
-  const titleHtml=(w.titleLines&&w.titleLines.length?w.titleLines:[w.title]).map(x=>esc(x)).join('<br>');
-  const meta=(w.meta||[]);
-  const f='<div class="footerRow"><span>'+esc(w.subtitle||'')+'</span><span>'+esc(meta.join(' · '))+'</span></div>';
-  const img=()=>w.asset?'<img src="'+w.asset.src+'" alt="'+esc(w.asset.alt||'')+'" crossorigin="anonymous">':'';
-  const arrow=`<svg viewBox="0 0 100 70"><path d="M5 35H67" stroke="#f3bb4d" stroke-width="10" fill="none"/><path d="M58 12L88 35 58 58" stroke="#f3bb4d" stroke-width="10" fill="none" stroke-linejoin="miter"/></svg>`;
-  const windowIcon=`<svg viewBox="0 0 100 100"><rect x="12" y="12" width="76" height="76" fill="none" stroke="#9e817b" stroke-width="1.6"/><line x1="50" y1="12" x2="50" y2="88" stroke="#9e817b" stroke-width="1.6"/><line x1="12" y1="50" x2="88" y2="50" stroke="#9e817b" stroke-width="1.6"/></svg>`;
-  const flower=`<svg viewBox="0 0 240 240"><g transform="translate(120 120)"><circle cy="-52" r="39" fill="#274d3f"/><circle cx="44" cy="-27" r="39" fill="#274d3f"/><circle cx="44" cy="27" r="39" fill="#274d3f"/><circle cy="52" r="39" fill="#274d3f"/><circle cx="-44" cy="27" r="39" fill="#274d3f"/><circle cx="-44" cy="-27" r="39" fill="#274d3f"/><circle r="31" fill="#e7d75b"/></g></svg>`;
-  const wave=`<svg viewBox="0 0 240 130"><path d="M15 64C45 42 68 43 97 66s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/><path d="M15 79C45 57 68 58 97 81s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/><path d="M15 94C45 72 68 73 97 96s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/></svg>`;
-
-  if(w.variant==='p1')return `<div class="poster p1">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="caseNo"><strong>01</strong><span>작은 동네 카페의 브랜드 리뉴얼을 가정한<br>첫 번째 편집 케이스 스터디</span></div><div class="photoArea">${img()}</div>${f}</div>`;
-
-  if(w.variant==='p2')return `<div class="poster p2">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="koreanSub">이번 달, 우리가 본 것</div><div class="moduleMap"><span>01<br>THINK</span><span>02<br>SORT</span><span>03<br>EDIT</span><span>04<br>MAKE</span></div>${f}</div>`;
-
-  if(w.variant==='p3')return `<div class="poster p3">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="copy">${esc((w.description||[])[0]||'')}</div><div class="metaLines"><b>WEEK 01</b><span>브리프와 자료 정리</span><b>WEEK 02</b><span>시각 방향 제안</span><b>WEEK 03</b><span>디자인과 수정</span><b>WEEK 04</b><span>최종 검수와 전달</span></div><div class="bar"></div></div>`;
-
-  if(w.variant==='p4')return `<div class="poster p4">${e}<div class="frame"><h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="microNote">HELLO@ARCHIVE.KR<br>REPLY WITHIN 48 HOURS</div><div class="arrowSvg">${arrow}</div></div>${f}</div>`;
-
-  if(w.variant==='p5')return `<div class="poster p5">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="photoArea">${img()}</div><div class="workshopInfo"><b>DATE</b><span>11.28 SAT / 14:00</span><b>FOR</b><span>기획자 · 디자이너 · 에디터</span><b>APPLY</b><span>ARCHIVE.KR/BRIEF</span></div>${f}</div>`;
-
-  if(w.variant==='p6')return `<div class="poster p6">${e}<div class="frame"><h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="smallCopy">서울 마포구 작은 집<br>11.21 SAT · 17:00<br>RSVP 010-0000-0000</div><div class="windowSvg">${windowIcon}</div></div>${f}</div>`;
-
-  if(w.variant==='p7')return `<div class="poster p7">${e}<div class="photoCircle">${img()}</div><h2 class="ttl ${titleClass}">${titleHtml}</h2>${f}</div>`;
-
-  if(w.variant==='p8')return `<div class="poster p8">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="eventMeta"><b>DATE</b><span>11.07 SAT 18:00</span><b>PLACE</b><span>GOOD CAKE CLUB</span></div><div class="flowerSvg">${flower}</div>${f}</div>`;
-
-  if(w.variant==='p9')return `<div class="poster p9">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="note">짧은 문장 하나를 오래 남기는 카드</div><div class="waveCluster"><div class="waveSvg">${wave}</div><span class="dot"></span></div><div class="thankMeta"><b>FROM</b><span>ARCHIVE STUDIO</span><b>DATE</b><span>2026.10.06</span></div>${f}</div>`;
-
-  return `<div class="poster p10">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="micro">매일 아침 8시, 오늘의 첫 빵을 꺼냅니다.</div><div class="photoArea">${img()}</div><div class="receipt"><b>CROISSANT</b><span>4.8</span><b>FILTER COFFEE</b><span>3.5</span><b>BAKE TIME</b><span>08:00</span><b>TODAY</b><span>24 PCS</span></div><div class="bakeryNote">첫 번째 배치는 오전 8시에 나옵니다.<br>오늘의 빵은 소진 시 마감합니다.</div>${f}</div>`;
-}
 function filtered(){
-  const q=$("#search").value.trim().toLowerCase();
-  return allWorks().filter(({p,w})=>{
-    if(activeProject!=="all"&&p.id!==activeProject)return false;
-    const hay=(w.id+" "+w.title+" "+(w.tags||[]).join(" ")).toLowerCase();
-    return !q||hay.includes(q);
+  const q=$("#search").value.trim().toLowerCase(), status=$("#statusFilter").value;
+  return POSTER_WORKS.filter(w=>{
+    if(activeProject!=="all"&&w.projectId!==activeProject) return false;
+    const hay=(w.id+" "+w.title+" "+w.tags.join(" ")).toLowerCase();
+    if(q&&!hay.includes(q)) return false;
+    const s=getState(w.id);
+    if(status==="fav"&&!s.fav) return false;
+    if(["approved","revise"].includes(status)&&s.status!==status) return false;
+    return true;
   });
 }
-function render(){
-  const ps=allPosterProjects();
-  $("#projectStrip").innerHTML=
-    '<button class="'+(activeProject==="all"?"active":"")+'" onclick="setProject(\'all\')">전체</button>'+
-    ps.map(p=>'<button class="'+(activeProject===p.id?"active":"")+'" onclick="setProject(\''+p.id+'\')">'+esc(p.name)+'</button>').join("");
-  $("#projectFilter").innerHTML='<option value="all">모든 프로젝트</option>'+ps.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("");
+function renderNav(){
+  $("#projectTabs").innerHTML='<button class="'+(activeProject==="all"?"active":"")+'" data-project="all">전체</button>'+projects.map(p=>'<button class="'+(activeProject===p.id?"active":"")+'" data-project="'+p.id+'">'+esc(p.name)+'</button>').join("");
+  $("#projectTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{activeProject=b.dataset.project;renderAll()});
+  $("#projectFilter").innerHTML='<option value="all">모든 프로젝트</option>'+projects.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("");
   $("#projectFilter").value=activeProject;
+}
+function renderGrid(){
   const items=filtered();
-  $("#totalCount").textContent=String(allWorks().length).padStart(3,"0");
-  $("#resultCount").textContent=items.length+" / "+allWorks().length+" poster";
-  $("#grid").innerHTML=items.length?items.map(({p,w})=>'<article class="card" onclick="openWork(\''+p.id+'\',\''+w.id+'\')"><div class="thumb">'+posterHTML(w)+'</div><div class="meta"><b>'+w.id+' / '+esc(w.title)+'</b><span>'+esc((w.tags||[]).slice(0,2).join(" · "))+'</span></div></article>').join(""):'<div class="empty">조건에 맞는 포스터가 없습니다.</div>';
+  $("#totalCount").textContent=String(POSTER_WORKS.length).padStart(3,"0");
+  $("#resultCount").textContent=items.length+" / "+POSTER_WORKS.length+" poster";
+  $("#grid").innerHTML=items.map(w=>{
+    const p=getProject(w.projectId), out=renderPoster(w,p), s=getState(w.id);
+    const qa=out.model.qa.pass?"PASS":"REVIEW";
+    return '<article class="card" data-work="'+w.id+'"><div class="poster-shell">'+out.html+'</div><span class="qa-badge '+(out.model.qa.pass?"":"fail")+'">'+qa+'</span><div class="meta"><b>'+esc(w.id)+' / '+esc(w.title)+'</b><span>'+(s.fav?"★ ":"")+esc(w.template)+'</span></div></article>';
+  }).join("") || '<div class="empty">조건에 맞는 포스터가 없습니다.</div>';
+  $("#grid").querySelectorAll(".card").forEach(card=>{
+    const w=POSTER_WORKS.find(x=>x.id===card.dataset.work);
+    card.onclick=()=>openWork(w);
+    requestAnimationFrame(()=>{
+      const qa=domQA(card.querySelector(".poster-shell"));
+      if(!qa.pass){
+        const badge=card.querySelector(".qa-badge"); badge.textContent="REVIEW"; badge.classList.add("fail"); badge.title=qa.issues.join("\n");
+      }
+    });
+  });
+  const staticPass=POSTER_WORKS.filter(w=>renderPoster(w,getProject(w.projectId)).model.qa.pass).length;
+  $("#passSummary").textContent="STATIC QA "+staticPass+"/"+POSTER_WORKS.length;
 }
-function setProject(id){activeProject=id;render()}
-$("#search").addEventListener("input",render);
-$("#projectFilter").addEventListener("change",e=>{activeProject=e.target.value;render()});
-function openWork(pid,wid){
-  const p=ARCHIVE_DATA.projects.find(x=>x.id===pid),w=p.works.find(x=>x.id===wid);
-  selected={p,w};
-  $("#panelProject").textContent=p.name+" / "+w.id;
-  $("#panelTitle").textContent=w.title;
-  const refs=(w.references||[]).map(name=>{const r=(p.referenceSources||[]).find(x=>x.title.includes(name)||name.includes(x.title.split(" — ")[0]));return r?'<li><a href="'+r.url+'" target="_blank" rel="noopener">'+esc(r.title)+'</a></li>':'<li>'+esc(name)+'</li>'}).join('');
-  const asset=w.asset?'<div class="assetCard"><b>ASSET INFO</b><br>'+esc(w.asset.alt||'')+'<br>'+esc(w.asset.credit||'')+' · '+esc(w.asset.license||'')+'<br><a href="'+w.asset.source+'" target="_blank" rel="noopener">원본 이미지 보기 ↗</a></div>':'';
-  $("#panelBody").innerHTML='<div class="preview"><div class="thumb" data-export>'+posterHTML(w)+'</div></div>'+
-  '<div class="actions"><button onclick="exportPNG()">PNG 2×</button><button onclick="exportPDF()">PDF</button><button onclick="copyPrompt()">프롬프트 복사</button></div>'+
-  asset+
-  '<div class="promptbox"><h4>REFERENCE SOURCES</h4><ul class="refList">'+refs+'</ul><br><h4>DESIGN PROMPT</h4><pre>'+esc(w.prompt||"")+'</pre><h4>PROJECT PROMPT</h4><pre>'+esc(p.projectPrompt||"")+'</pre><h4>DESIGN SYSTEM</h4><pre>'+esc(JSON.stringify(p.designSystem,null,2))+'</pre></div>';
-  $("#panel").classList.add("open");$("#backdrop").classList.add("show");
+function renderAll(){renderNav();renderGrid()}
+$("#search").oninput=renderGrid; $("#statusFilter").onchange=renderGrid;
+$("#projectFilter").onchange=e=>{activeProject=e.target.value;renderAll()};
+
+function refsHtml(p,w){
+  return (p.referenceSources||[]).filter(r=>(w.references||[]).some(name=>r.title.includes(name)||name.includes(r.title.split(" — ")[0]))).map(r=>'<li><a target="_blank" rel="noopener" href="'+r.url+'">'+esc(r.title)+'</a></li>').join("");
 }
-function closePanel(){$("#panel").classList.remove("open");$("#backdrop").classList.remove("show")}
-$("#closePanel").onclick=closePanel;$("#backdrop").onclick=closePanel;
-async function capture(){await document.fonts?.ready;return html2canvas(document.querySelector("[data-export]"),{scale:2,backgroundColor:"#fff",useCORS:true})}
-function download(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-async function exportPNG(){const c=await capture();c.toBlob(b=>download(b,selected.p.id+"-"+selected.w.id+".png"))}
-async function exportPDF(){const {jsPDF}=jspdf,c=await capture(),pdf=new jsPDF({unit:"px",format:[1080,1350]});pdf.addImage(c.toDataURL("image/png"),"PNG",0,0,1080,1350);pdf.save(selected.p.id+"-"+selected.w.id+".pdf")}
-async function copyPrompt(){const t="PROJECT: "+selected.p.name+"\n\nDESIGN SYSTEM\n"+JSON.stringify(selected.p.designSystem,null,2)+"\n\nPROJECT PROMPT\n"+selected.p.projectPrompt+"\n\nDESIGN PROMPT\n"+selected.w.prompt;await navigator.clipboard.writeText(t);alert("프롬프트를 복사했습니다.")}
-function showModal(mode){
-  if(mode==="project"){
-    $("#modalTitle").textContent="새 포스터 프로젝트";
-    $("#modalBody").innerHTML='<div class="field"><label>프로젝트 이름</label><input id="pn" placeholder="예: Korean Editorial 02"></div><div class="field"><label>추가 요구사항</label><textarea id="pr" placeholder="참고자료는 ChatGPT 대화에 첨부하고, 여기에는 고정하고 싶은 조건만 적어도 됩니다."></textarea></div><div class="modal-actions"><button onclick="hideModal()">닫기</button><button class="primary" onclick="copyNewProject()">ChatGPT용 명령 복사</button></div>';
-  }else{
-    $("#modalTitle").textContent="현재 프로젝트로 생성";
-    const ps=allPosterProjects();
-    $("#modalBody").innerHTML='<div class="field"><label>프로젝트</label><select id="cp">'+ps.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("")+'</select></div><div class="field"><label>생성 개수</label><input id="count" type="number" value="10" min="1"></div><div class="field"><label>추가 지시</label><textarea id="extra" placeholder="예: 제품 사진 없는 타이포 중심 10개"></textarea></div><div class="modal-actions"><button onclick="hideModal()">닫기</button><button class="primary" onclick="copyGenerate()">명령 복사</button></div>';
-  }
-  $("#modal").classList.add("show");
+function openWork(w){
+  const p=getProject(w.projectId),out=renderPoster(w,p); selected={w,p,out};
+  $("#drawerProject").textContent=p.name+" / "+w.id+" / "+w.template;
+  $("#drawerTitle").textContent=w.title;
+  const asset=out.model.asset;
+  const assetHtml=asset?'<div class="asset"><b>ASSET INFO</b><br>'+esc(asset.alt)+'<br>'+esc(asset.credit)+' · '+esc(asset.license)+'<br><a target="_blank" rel="noopener" href="'+asset.source+'">원본 이미지 보기 ↗</a></div>':'';
+  const s=getState(w.id);
+  $("#drawerBody").innerHTML='<div class="preview"><div class="poster-shell">'+out.html+'</div></div>'+
+  '<div class="actions"><button class="dark" id="pngBtn">PNG 2×</button><button id="pdfBtn">PDF</button><button id="copyPromptBtn">프롬프트 복사</button><button id="favBtn">'+(s.fav?"★ 즐겨찾기":"☆ 즐겨찾기")+'</button><button id="approveBtn">승인</button><button id="reviseBtn">수정 필요</button></div>'+
+  assetHtml+'<div class="info-block"><h4>ENGINE RESULT</h4><pre>'+esc(JSON.stringify({template:w.template,titleLines:out.model.titleLayout.lines,staticQA:out.model.qa},null,2))+'</pre><h4>REFERENCE SOURCES</h4><ul class="ref-list">'+refsHtml(p,w)+'</ul><br><h4>DESIGN PROMPT</h4><pre>'+esc(w.prompt)+'</pre><h4>PROJECT PROMPT</h4><pre>'+esc(p.projectPrompt)+'</pre><h4>PROJECT SPEC</h4><pre>'+esc(JSON.stringify(p,null,2))+'</pre></div>';
+  $("#pngBtn").onclick=()=>exportPoster("png"); $("#pdfBtn").onclick=()=>exportPoster("pdf"); $("#copyPromptBtn").onclick=copyPrompt;
+  $("#favBtn").onclick=()=>mark("fav"); $("#approveBtn").onclick=()=>mark("approved"); $("#reviseBtn").onclick=()=>mark("revise");
+  $("#drawer").classList.add("open");$("#backdrop").classList.add("show");
+}
+function closeDrawer(){$("#drawer").classList.remove("open");$("#backdrop").classList.remove("show")}
+$("#closeDrawer").onclick=closeDrawer;$("#backdrop").onclick=closeDrawer;
+function mark(type){
+  const s=getState(selected.w.id);
+  if(type==="fav") s.fav=!s.fav; else s.status=type;
+  state[selected.w.id]=s; saveState(); renderGrid(); openWork(selected.w);
+}
+async function copyPrompt(){
+  const {w,p}=selected;
+  const t='PROJECT: '+p.name+'\nTEMPLATE: '+w.template+'\n\nPROJECT SPEC\n'+JSON.stringify(p,null,2)+'\n\nDESIGN PROMPT\n'+w.prompt;
+  await navigator.clipboard.writeText(t); alert("프롬프트를 복사했습니다.");
+}
+async function waitImages(root){
+  const imgs=[...root.querySelectorAll("img")];
+  await Promise.all(imgs.map(img=>img.complete?Promise.resolve():new Promise(res=>{img.onload=img.onerror=res})));
+}
+async function captureFull(){
+  const stage=$("#exportStage");stage.innerHTML='<div class="poster-shell">'+selected.out.html+'</div>';
+  await document.fonts.ready; await waitImages(stage);
+  const shell=stage.querySelector(".poster-shell");
+  return html2canvas(shell,{scale:2,backgroundColor:null,useCORS:true,width:1080,height:1350});
+}
+async function exportPoster(type){
+  const canvas=await captureFull();
+  if(type==="png"){canvas.toBlob(blob=>{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=selected.w.id+"-"+selected.w.title+".png";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});return}
+  const {jsPDF}=window.jspdf,pdf=new jsPDF({unit:"px",format:[1080,1350],orientation:"portrait"});
+  pdf.addImage(canvas.toDataURL("image/png"),"PNG",0,0,1080,1350);pdf.save(selected.w.id+"-"+selected.w.title+".pdf");
+}
+
+function showProjectModal(){
+  $("#modalTitle").textContent="새 포스터 프로젝트";
+  $("#modalBody").innerHTML='<div class="field"><label>프로젝트 이름</label><input id="pn" placeholder="예: Korean Culture Poster"></div><div class="field"><label>추가 요구</label><textarea id="pr" placeholder="참고 이미지는 Chat에 첨부하고, 고정 조건만 적어 주세요."></textarea></div><div class="modal-actions"><button id="cancel">닫기</button><button class="primary" id="copyNew">명령 복사</button></div>';
+  $("#cancel").onclick=hideModal;$("#copyNew").onclick=copyNewProject;$("#modal").classList.add("show");
+}
+function showGenerateModal(){
+  $("#modalTitle").textContent="엔진으로 대량 생성";
+  $("#modalBody").innerHTML='<div class="field"><label>프로젝트</label><select id="gp">'+projects.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("")+'</select></div><div class="field"><label>개수</label><input id="gc" type="number" min="1" value="10"></div><div class="field"><label>추가 지시</label><textarea id="ge" placeholder="예: 공연/전시 계열 비중을 높여 줘"></textarea></div><div class="modal-actions"><button id="cancel">닫기</button><button class="primary" id="copyGen">명령 복사</button></div>';
+  $("#cancel").onclick=hideModal;$("#copyGen").onclick=copyGenerate;$("#modal").classList.add("show");
 }
 function hideModal(){$("#modal").classList.remove("show")}
-$("#newProject").onclick=()=>showModal("project");
-$("#newPoster").onclick=()=>showModal("project");
-$("#chatCmd").onclick=()=>showModal("generate");
-$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")hideModal()});
+$("#modal").onclick=e=>{if(e.target.id==="modal")hideModal()};
+$("#newProject").onclick=showProjectModal;$("#newPoster").onclick=showProjectModal;$("#chatCmd").onclick=showGenerateModal;
 async function copyNewProject(){
-  const name=$("#pn").value.trim(),req=$("#pr").value.trim();
-  if(!name)return alert("프로젝트 이름을 입력해 주세요.");
-  const t='GitHub 저장소 zciop-nk/creative-archive에 새 포스터 프로젝트 "'+name+'"을 추가해. 지금 이 Chat에 첨부한 레퍼런스 자료들을 먼저 분석해서 공통 Visual DNA를 추출하고, designSystem과 projectPrompt를 저장해. 기존 프로젝트를 복제하지 말고 참고자료의 타이포, 그리드, 여백, 색상, 이미지 처리 규칙을 구조화해. 테스트 포스터 10개를 만들고 각 결과물에 실제 사용한 prompt를 저장해. index.html의 ARCHIVE_DATA에 추가하고 main에 커밋해. 추가 요구: '+req;
+  const name=$("#pn").value.trim(),extra=$("#pr").value.trim();if(!name)return alert("프로젝트 이름을 입력해 주세요.");
+  const t='GitHub 저장소 zciop-nk/creative-archive에 포스터 신규 프로젝트 "'+name+'"을 만들어. 첨부한 레퍼런스를 분석해 data/project-specs.js에 PROJECT_SPEC을 추가하고, 기존 engine/의 template/typography/assets/qa/renderer 구조를 재사용해. 기존 프로젝트 HTML을 복제하지 말고 프로젝트의 Visual DNA만 spec으로 저장해. 테스트 작품 10개는 data/poster-content.js에 데이터만 추가하고 개별 posterHTML 분기를 만들지 마. 모든 작품은 engine static QA를 통과하도록 해. 추가 요구: '+extra;
   await navigator.clipboard.writeText(t);alert("신규 프로젝트 명령을 복사했습니다.");
 }
 async function copyGenerate(){
-  const p=ARCHIVE_DATA.projects.find(x=>x.id===$("#cp").value),n=Number($("#count").value||10),extra=$("#extra").value.trim();
-  const t='GitHub 저장소 zciop-nk/creative-archive의 '+p.id+' ('+p.name+') 포스터 프로젝트를 적용해. index.html의 designSystem, projectPrompt, 기존 작품 prompt를 먼저 읽고 시각 규칙을 유지해. 기존 작품과 실질적으로 중복되지 않는 포스터 '+n+'개를 다음 번호부터 추가해. 각 작품은 실제 사용한 prompt와 tags를 함께 저장하고 main에 커밋해. 추가 지시: '+extra;
-  await navigator.clipboard.writeText(t);alert("생성 명령을 복사했습니다.");
+  const pid=$("#gp").value,n=Number($("#gc").value||10),extra=$("#ge").value.trim(),p=getProject(pid);
+  const t='GitHub 저장소 zciop-nk/creative-archive의 '+pid+' ('+p.name+')를 적용해 포스터 '+n+'개를 추가해. data/project-specs.js의 규격과 engine/ 템플릿·한글 타이포·asset selector·QA를 사용해. data/poster-content.js에 다음 번호부터 콘텐츠 데이터만 추가하고 index.html이나 renderer에 작품별 조건문을 만들지 마. 템플릿은 허용된 유형 안에서 분산하고, 사진형만 intent에 맞는 asset을 사용해. 한글 제목은 의미 단위 줄바꿈, 메인 비주얼은 1개 이하, safe area 충돌 금지. static QA FAIL 데이터는 등록하지 말고 수정 후 통과시켜. 추가 지시: '+extra;
+  await navigator.clipboard.writeText(t);alert("대량 생성 명령을 복사했습니다.");
 }
-document.querySelectorAll("[data-cat]").forEach(btn=>btn.onclick=()=>{if(btn.dataset.cat!=="poster")alert("지금은 포스터부터 완성 중입니다. 포스터 검증 후 이 메뉴를 같은 방식으로 확장할게요.")});
-render();
+document.querySelectorAll("[data-menu]").forEach(b=>b.onclick=()=>{if(b.dataset.menu!=="poster")alert("포스터 엔진 검증 후 같은 구조로 이 메뉴를 확장합니다.")});
+renderAll();
 </script>
 </body>
 </html>
