@@ -38,6 +38,46 @@ export const ASSET_LIBRARY = [
     source: "https://unsplash.com/photos/a-close-up-of-some-food-5bsV1L0o4Fw",
     license: "Unsplash License",
     crop: "center"
+  },
+  {
+    id: "tea-01",
+    intent: "tea",
+    src: "https://images.unsplash.com/photo-1600675331148-3a67adae048d?auto=format&fit=crop&w=1600&q=88",
+    alt: "나무 테이블 위 흰 찻잔",
+    credit: "Kate Laine / Unsplash",
+    source: "https://unsplash.com/photos/white-ceramic-cup-on-brown-wooden-table-pT2zu7UsoX4",
+    license: "Unsplash License",
+    crop: "center"
+  },
+  {
+    id: "bookstore-01",
+    intent: "bookstore",
+    src: "https://images.unsplash.com/photo-1774070231417-4bf4d2025878?auto=format&fit=crop&w=1600&q=88",
+    alt: "책장이 가득한 서점 내부",
+    credit: "Christopher Stites / Unsplash",
+    source: "https://unsplash.com/photos/interior-view-of-a-bookstore-with-shelves-full-of-books-lUVOWdpPEW4",
+    license: "Unsplash License",
+    crop: "center"
+  },
+  {
+    id: "desk-01",
+    intent: "desk",
+    src: "https://images.unsplash.com/photo-1675453987594-bd086730bc11?auto=format&fit=crop&w=1600&q=88",
+    alt: "카메라와 노트, 펜이 놓인 나무 책상",
+    credit: "Kawê Rodrigues / Unsplash",
+    source: "https://unsplash.com/photos/a-wooden-desk-with-a-camera-notebook-and-pen-QOv93dCLego",
+    license: "Unsplash License",
+    crop: "center"
+  },
+  {
+    id: "teaset-01",
+    intent: "teaset",
+    src: "https://images.unsplash.com/photo-1700320591123-ea7468643551?auto=format&fit=crop&w=1600&q=88",
+    alt: "테이블 위 도자기 티포트와 찻잔",
+    credit: "Patti Black / Unsplash",
+    source: "https://unsplash.com/photos/a-tea-pot-and-two-cups-on-a-table-BFkL0bc7zFk",
+    license: "Unsplash License",
+    crop: "center"
   }
 ];
 
