@@ -169,6 +169,43 @@ a{text-decoration:none;color:inherit}
 .p9 .ttl{font-size:5.5cqw;line-height:1.12;max-width:90%}
 .p10 .ttl{font-size:6.5cqw;line-height:1.05}
 
+
+/* --- composition cleanup v4: one dominant visual, safe zones --- */
+.p1 .caseNo{grid-template-columns:8.5cqw 1fr;align-items:start;margin-top:5%}
+.p1 .caseNo strong{font-size:5.4cqw;line-height:.9}
+.p1 .caseNo span{font-size:1.55cqw;line-height:1.55;max-width:82%;padding-top:.2cqw}
+.p1 .photoArea{height:34%;margin-top:6%}
+
+.p2 .koreanSub{font-size:3.9cqw;line-height:1.12;margin-top:3%}
+.p2 .moduleMap{width:58%;margin:13% auto 0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;aspect-ratio:1;border:1px solid #4d4257;position:relative}
+.p2 .moduleMap span{display:flex;align-items:flex-end;padding:6%;font-size:1.45cqw;letter-spacing:.04em;border-right:1px solid #4d4257;border-bottom:1px solid #4d4257}
+.p2 .moduleMap span:nth-child(2){border-right:0}
+.p2 .moduleMap span:nth-child(3){border-bottom:0}
+.p2 .moduleMap span:nth-child(4){border-right:0;border-bottom:0;background:#b59bc9;color:#2d2335;align-items:center;justify-content:center;font-size:1.65cqw;font-weight:700}
+.p2 .moduleMap:after{content:"";position:absolute;width:30%;height:1px;background:#4d4257;right:-18%;top:49%}
+
+.p5 .photoArea{height:35%;margin-top:10%}
+.p5 .photoArea img{object-position:center 55%}
+.p5 .workshopInfo{margin-top:8%;display:grid;grid-template-columns:auto 1fr;gap:1.15cqw 3cqw;font-size:1.55cqw;line-height:1.35;border-top:1px solid #c6bfb3;padding-top:5%}
+.p5 .workshopInfo b{font-weight:700}
+
+.p6 .frame{height:61%;display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:auto 1fr auto;column-gap:8%;padding:8%}
+.p6 .frame .ttl{grid-column:1/2;grid-row:1;margin:0;align-self:start;max-width:100%}
+.p6 .frame .smallCopy{position:static;grid-column:1/2;grid-row:3;align-self:end;max-width:100%;font-size:1.5cqw;line-height:1.5}
+.p6 .windowSvg{position:static;grid-column:2/3;grid-row:2/4;width:72%;aspect-ratio:1;align-self:end;justify-self:end;margin:0 0 2% 0}
+
+.p9 .note{margin-top:3%;max-width:66%}
+.p9 .waveCluster{width:66%;height:24%;margin:12% auto 0;position:relative}
+.p9 .waveSvg{width:100%;height:100%;margin:0}
+.p9 .waveCluster .dot{position:absolute;width:5.5cqw;aspect-ratio:1;border-radius:50%;background:#6e4b91;right:7%;top:2%}
+.p9 .thankMeta{margin-top:8%;display:grid;grid-template-columns:auto 1fr;gap:1cqw 3cqw;font-size:1.5cqw;line-height:1.35}
+
+.p10 .photoArea{height:31%;margin-top:6%;background:#e5ddd0;padding:2.2%}
+.p10 .photoArea img{object-fit:contain;object-position:center center}
+.p10 .receipt{margin-top:4.5%;padding-top:4%;gap:1cqw 3cqw}
+.p10 .bakeryNote{margin-top:4%;font-size:1.5cqw;line-height:1.45;max-width:70%;color:#49443e}
+.p10 .footerRow{margin-top:6%}
+
 </style>
 </head>
 <body>
@@ -263,8 +300,8 @@ window.ARCHIVE_DATA={
         {id:"002",title:"Between Thinking & Making",type:"poster",variant:"p2",tags:["newsletter","typography","grid"],subtitle:"STUDIO LETTER / NO.011",description:["이번 달, 우리가 본 것","생각과 제작 사이의 기록"],meta:["ISSUE 011","OCT 2026"],references:["Pinterest — Typography_Korean_한글","Ancient Futures, Whang Chongnye"],prompt:"스튜디오 뉴스레터 헤더. 옅은 라일락 종이 배경. 상단 좁은 영문 산세리프 헤드라인, 아래 한글 세리프 부제, 중앙에는 겹치는 정사각형 모듈 그리드. 하단에 호수·발행일·스튜디오 이름을 8~10pt 느낌의 미세 정보로 정렬한다."},
         {id:"003",title:"다음 네 주를 함께 그립니다",titleLines:["다음 네 주를","함께 그립니다."],typeStyle:"sans",type:"poster",variant:"p3",tags:["roadmap","information","editorial"],subtitle:"PROJECT ROADMAP / SAMPLE",description:["한 달 프로젝트의 흐름을 한 장에 정리합니다."],meta:["WEEK 01–04","PROJECT 03"],references:["Opening the Storerooms","Pinterest — 한글 포스터 디자인"],prompt:"프로젝트 로드맵 포스터. 아주 옅은 녹색 종이 톤. 상단 큰 한글 제목과 한 줄 설명. 중단에는 WEEK 01~04를 번호/주제/작은 설명의 3단 정보 계층으로 구성. 하단 짙은 녹색 바와 아주 작은 프로젝트 코드·날짜를 둔다."},
         {id:"004",title:"다음 프로젝트를 이야기해 볼까요",titleLines:["다음 프로젝트를","이야기해 볼까요"],typeStyle:"sans",type:"poster",variant:"p4",tags:["contact","bold","graphic"],subtitle:"NEW BUSINESS / CONTACT CARD",description:["문의 한 번의 시작","다음 프로젝트의 첫 장면"],meta:["HELLO@ARCHIVE.KR","SEOUL / 2026"],references:["Monami: Concept store invitation","Pinterest — Typography_Korean_한글"],prompt:"코발트 블루 연락처 포스터. 상단 작은 시리즈 표기. 화면 안쪽 얇은 라인 프레임. 프레임 내부 큰 한글 문장을 좌상단에 두고, 우하단에는 두꺼운 노란 화살표 SVG. 프레임 하단에는 이메일·지역·응답시간을 작은 텍스트로 정렬한다."},
-        {id:"005",title:"좋은 브리프를 쓰는 연습",titleLines:["좋은 브리프를","쓰는 연습"],typeStyle:"serif",type:"poster",variant:"p5",tags:["workshop","serif","photo"],subtitle:"WORDS BEFORE FORMS",description:["문장을 다듬으면 형태가 따라옵니다."],meta:["11.28 SAT","WORKSHOP 05"],asset:{src:"https://images.unsplash.com/photo-1643821042859-39fc6e13d2fd?auto=format&fit=crop&w=1400&q=88",alt:"책과 커피가 있는 미니멀 정물",credit:"Mary Skrynnikova / Unsplash",source:"https://unsplash.com/photos/a-table-topped-with-a-cup-of-coffee-and-two-candles-XqinY-iT6vo",license:"Unsplash License"},references:["Ancient Futures, Whang Chongnye","Pinterest — 한글 포스터 디자인"],prompt:"브리프 워크숍 포스터. 따뜻한 크림 배경, 세리프 한글 제목. 중단에 책·커피가 있는 미니멀 정물 사진을 낮게 크롭하고, 사진 위/아래로 붉은 세로선과 얇은 페이지 선 그래픽을 추가. 하단에는 일정/장소/신청 정보를 작은 활자로 구성한다."},
-        {id:"006",title:"새로운 집에 당신을 초대해요",titleLines:["새로운 집에","당신을 초대해요"],typeStyle:"sans",type:"poster",variant:"p6",tags:["invitation","minimal","linework"],subtitle:"HOUSEWARMING / OPEN HOUSE",description:["작은 집들이에 초대합니다."],meta:["11.21 SAT 17:00","MAPO / SEOUL"],references:["Monami: Concept store invitation","Pinterest — 한글 포스터 디자인"],prompt:"집들이 초대장. 아주 옅은 로즈 베이지. 얇은 프레임 안에 한글 초대 문구를 왼쪽 상단에 두고, 오른쪽 아래에 창문/평면도 느낌의 선형 SVG 아이콘. 프레임 하단에는 날짜·시간·주소·RSVP 정보를 2단으로 작게 정렬한다."},
+        {id:"005",title:"좋은 브리프를 쓰는 연습",titleLines:["좋은 브리프를","쓰는 연습"],typeStyle:"serif",type:"poster",variant:"p5",tags:["workshop","serif","photo"],subtitle:"WORDS BEFORE FORMS",description:["문장을 다듬으면 형태가 따라옵니다."],meta:["11.28 SAT","WORKSHOP 05"],asset:{src:"https://images.unsplash.com/photo-1643821042859-39fc6e13d2fd?auto=format&fit=crop&w=1400&q=88",alt:"책과 커피가 있는 미니멀 정물",credit:"Mary Skrynnikova / Unsplash",source:"https://unsplash.com/photos/a-table-topped-with-a-cup-of-coffee-and-two-candles-XqinY-iT6vo",license:"Unsplash License"},references:["Ancient Futures, Whang Chongnye","Pinterest — 한글 포스터 디자인"],prompt:"브리프 워크숍 포스터. 따뜻한 크림 배경과 세리프 한글 제목. 중단의 책·커피 정물 사진을 유일한 메인 비주얼로 사용하고 별도의 책 그래픽은 넣지 않는다. 사진 아래에 날짜·대상·신청 링크를 작은 정보 그리드로 정리한다."},
+        {id:"006",title:"새로운 집에 당신을 초대해요",titleLines:["새로운 집에","당신을 초대해요"],typeStyle:"sans",type:"poster",variant:"p6",tags:["invitation","minimal","linework"],subtitle:"HOUSEWARMING / OPEN HOUSE",description:["작은 집들이에 초대합니다."],meta:["11.21 SAT 17:00","MAPO / SEOUL"],references:["Monami: Concept store invitation","Pinterest — 한글 포스터 디자인"],prompt:"집들이 초대장. 로즈 베이지 배경과 얇은 프레임. 프레임을 제목·정보·아이콘의 세 안전 영역으로 분리한다. 제목은 좌상단, 날짜/주소/RSVP는 좌하단, 작은 창문 SVG는 우하단에 두며 서로 겹치지 않는다."},
         {id:"007",title:"함께 맞이할 첫 번째 계절",titleLines:["함께 맞이할","첫 번째 계절"],typeStyle:"serif",type:"poster",variant:"p7",tags:["wedding","invitation","photo"],subtitle:"SMALL WEDDING INVITATION",description:["우리의 첫 계절을 함께 맞이해 주세요."],meta:["2026.11.28 12:00","SEOUL"],asset:{src:"https://images.unsplash.com/photo-1597768309312-97773de3239a?auto=format&fit=crop&w=1200&q=88",alt:"투명 유리병의 흰 꽃",credit:"Jessica Mangano / Unsplash",source:"https://unsplash.com/photos/white-flower-in-clear-glass-vase-DyCL-TWejdQ",license:"Unsplash License"},references:["Monami: Concept store invitation","Opening the Storerooms"],prompt:"작은 결혼식 초대장. 오프화이트 종이 톤. 상단 작은 날짜/이슈 표기, 중앙에 얇은 원형 프레임 안으로 흰 꽃 정물 사진을 원형 크롭. 그 아래 세리프 계열의 한글 제목, 하단에 신랑·신부/날짜/장소/초대 문장을 미세 활자로 정리한다."},
         {id:"008",title:"좋은 날은 같이 보내요",titleLines:["좋은 날은","같이 보내요."],typeStyle:"sans",type:"poster",variant:"p8",tags:["birthday","graphic","motif"],subtitle:"BIRTHDAY GATHERING",description:["ONE MORE GOOD YEAR"],meta:["11.07 SAT 18:00","GOOD CAKE / GOOD PEOPLE"],references:["Pinterest — 한글 포스터 디자인","Pinterest — Typography_Korean_한글"],prompt:"생일 파티 초대장. 버터 옐로 종이 톤. 상단 굵은 한글 제목과 짧은 영문 카피. 중앙에 짙은 녹색의 6잎 꽃 모티프와 노란 중심점을 크게 배치. 하단에는 날짜·시간·장소·드레스코드를 작은 정보 블록으로 구성한다."},
         {id:"009",title:"고마운 마음을 적어 보냅니다",titleLines:["고마운 마음을","적어 보냅니다."],typeStyle:"serif",type:"poster",variant:"p9",tags:["thankyou","graphic","serif"],subtitle:"FOR ALL THE LITTLE THINGS",description:["짧은 문장 하나를 오래 남기는 카드"],meta:["THANK YOU","VOL.09"],references:["Pinterest — 한글 포스터 디자인","Monami: Concept store invitation"],prompt:"감사 카드 포스터. 옅은 라일락 배경. 한글 세리프 제목을 왼쪽 상단에 배치하고, 중앙에는 3~4개의 얇은 웨이브 라인과 보라색 점 모티프. 하단에는 작은 감사 문장과 보내는 이 이름/날짜를 정렬한다."},
@@ -289,22 +326,30 @@ function posterHTML(w){
   const meta=(w.meta||[]);
   const f='<div class="footerRow"><span>'+esc(w.subtitle||'')+'</span><span>'+esc(meta.join(' · '))+'</span></div>';
   const img=()=>w.asset?'<img src="'+w.asset.src+'" alt="'+esc(w.asset.alt||'')+'" crossorigin="anonymous">':'';
-  const grid=`<svg viewBox="0 0 140 140"><rect x="15" y="15" width="82" height="82" fill="none" stroke="#4d4257" stroke-width="1.4"/><line x1="56" y1="15" x2="56" y2="97" stroke="#4d4257" stroke-width="1.4"/><line x1="15" y1="56" x2="97" y2="56" stroke="#4d4257" stroke-width="1.4"/><rect x="82" y="29" width="43" height="43" fill="#b59bc9"/></svg>`;
   const arrow=`<svg viewBox="0 0 100 70"><path d="M5 35H67" stroke="#f3bb4d" stroke-width="10" fill="none"/><path d="M58 12L88 35 58 58" stroke="#f3bb4d" stroke-width="10" fill="none" stroke-linejoin="miter"/></svg>`;
-  const book=`<svg viewBox="0 0 240 130"><path d="M25 70V25" stroke="#b34a3e" stroke-width="4"/><path d="M25 70C85 73 145 83 210 101" stroke="#222" stroke-width="1.5" fill="none"/><path d="M118 31v54" stroke="#222" stroke-width="1"/><path d="M118 31c32-12 63-11 92 4v66c-29-12-60-14-92 0z" fill="none" stroke="#222" stroke-width="1"/></svg>`;
   const windowIcon=`<svg viewBox="0 0 100 100"><rect x="12" y="12" width="76" height="76" fill="none" stroke="#9e817b" stroke-width="1.6"/><line x1="50" y1="12" x2="50" y2="88" stroke="#9e817b" stroke-width="1.6"/><line x1="12" y1="50" x2="88" y2="50" stroke="#9e817b" stroke-width="1.6"/></svg>`;
   const flower=`<svg viewBox="0 0 240 240"><g transform="translate(120 120)"><circle cy="-52" r="39" fill="#274d3f"/><circle cx="44" cy="-27" r="39" fill="#274d3f"/><circle cx="44" cy="27" r="39" fill="#274d3f"/><circle cy="52" r="39" fill="#274d3f"/><circle cx="-44" cy="27" r="39" fill="#274d3f"/><circle cx="-44" cy="-27" r="39" fill="#274d3f"/><circle r="31" fill="#e7d75b"/></g></svg>`;
-  const wave=`<svg viewBox="0 0 240 130"><circle cx="185" cy="28" r="10" fill="#6e4b91"/><path d="M15 70C45 48 68 49 97 72s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/><path d="M15 84C45 62 68 63 97 86s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/><path d="M15 98C45 76 68 77 97 100s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/></svg>`;
-  if(w.variant==='p1')return `<div class="poster p1">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="caseNo"><strong>01</strong><span>${esc((w.description||[]).join(' / '))}</span></div><div class="photoArea">${img()}</div>${f}</div>`;
-  if(w.variant==='p2')return `<div class="poster p2">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="koreanSub">${esc((w.description||[])[0]||'')}</div><div class="motifBox">${grid}</div>${f}</div>`;
+  const wave=`<svg viewBox="0 0 240 130"><path d="M15 64C45 42 68 43 97 66s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/><path d="M15 79C45 57 68 58 97 81s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/><path d="M15 94C45 72 68 73 97 96s63 22 126-2" fill="none" stroke="#6f6a78" stroke-width="2"/></svg>`;
+
+  if(w.variant==='p1')return `<div class="poster p1">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="caseNo"><strong>01</strong><span>작은 동네 카페의 브랜드 리뉴얼을 가정한<br>첫 번째 편집 케이스 스터디</span></div><div class="photoArea">${img()}</div>${f}</div>`;
+
+  if(w.variant==='p2')return `<div class="poster p2">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="koreanSub">이번 달, 우리가 본 것</div><div class="moduleMap"><span>01<br>THINK</span><span>02<br>SORT</span><span>03<br>EDIT</span><span>04<br>MAKE</span></div>${f}</div>`;
+
   if(w.variant==='p3')return `<div class="poster p3">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="copy">${esc((w.description||[])[0]||'')}</div><div class="metaLines"><b>WEEK 01</b><span>브리프와 자료 정리</span><b>WEEK 02</b><span>시각 방향 제안</span><b>WEEK 03</b><span>디자인과 수정</span><b>WEEK 04</b><span>최종 검수와 전달</span></div><div class="bar"></div></div>`;
+
   if(w.variant==='p4')return `<div class="poster p4">${e}<div class="frame"><h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="microNote">HELLO@ARCHIVE.KR<br>REPLY WITHIN 48 HOURS</div><div class="arrowSvg">${arrow}</div></div>${f}</div>`;
-  if(w.variant==='p5')return `<div class="poster p5">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="photoArea">${img()}</div><div class="bookSvg">${book}</div>${f}</div>`;
-  if(w.variant==='p6')return `<div class="poster p6">${e}<div class="frame"><h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="smallCopy">서울 마포구 작은 집<br>17:00부터 천천히 시작합니다<br>RSVP 010-0000-0000</div><div class="windowSvg">${windowIcon}</div></div>${f}</div>`;
+
+  if(w.variant==='p5')return `<div class="poster p5">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="photoArea">${img()}</div><div class="workshopInfo"><b>DATE</b><span>11.28 SAT / 14:00</span><b>FOR</b><span>기획자 · 디자이너 · 에디터</span><b>APPLY</b><span>ARCHIVE.KR/BRIEF</span></div>${f}</div>`;
+
+  if(w.variant==='p6')return `<div class="poster p6">${e}<div class="frame"><h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="smallCopy">서울 마포구 작은 집<br>11.21 SAT · 17:00<br>RSVP 010-0000-0000</div><div class="windowSvg">${windowIcon}</div></div>${f}</div>`;
+
   if(w.variant==='p7')return `<div class="poster p7">${e}<div class="photoCircle">${img()}</div><h2 class="ttl ${titleClass}">${titleHtml}</h2>${f}</div>`;
+
   if(w.variant==='p8')return `<div class="poster p8">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="eventMeta"><b>DATE</b><span>11.07 SAT 18:00</span><b>PLACE</b><span>GOOD CAKE CLUB</span></div><div class="flowerSvg">${flower}</div>${f}</div>`;
-  if(w.variant==='p9')return `<div class="poster p9">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="note">${esc((w.description||[])[0]||'')}</div><div class="waveSvg">${wave}</div>${f}</div>`;
-  return `<div class="poster p10">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="micro">${esc((w.description||[])[0]||'')}</div><div class="photoArea">${img()}</div><div class="receipt"><b>CROISSANT</b><span>4.8</span><b>FILTER COFFEE</b><span>3.5</span><b>BAKE TIME</b><span>08:00</span><b>TODAY</b><span>24 PCS</span></div>${f}</div>`;
+
+  if(w.variant==='p9')return `<div class="poster p9">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="note">짧은 문장 하나를 오래 남기는 카드</div><div class="waveCluster"><div class="waveSvg">${wave}</div><span class="dot"></span></div><div class="thankMeta"><b>FROM</b><span>ARCHIVE STUDIO</span><b>DATE</b><span>2026.10.06</span></div>${f}</div>`;
+
+  return `<div class="poster p10">${e}<h2 class="ttl ${titleClass}">${titleHtml}</h2><div class="micro">매일 아침 8시, 오늘의 첫 빵을 꺼냅니다.</div><div class="photoArea">${img()}</div><div class="receipt"><b>CROISSANT</b><span>4.8</span><b>FILTER COFFEE</b><span>3.5</span><b>BAKE TIME</b><span>08:00</span><b>TODAY</b><span>24 PCS</span></div><div class="bakeryNote">첫 번째 배치는 오전 8시에 나옵니다.<br>오늘의 빵은 소진 시 마감합니다.</div>${f}</div>`;
 }
 function filtered(){
   const q=$("#search").value.trim().toLowerCase();
