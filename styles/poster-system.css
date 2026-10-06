@@ -1,0 +1,82 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+.poster-shell{aspect-ratio:4/5;position:relative;overflow:hidden;border:1px solid #c9c3b7;background:#fff;container-type:inline-size}
+.poster-canvas{position:absolute;inset:0;padding:7.4%;display:grid;gap:0;color:#111;overflow:hidden;font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all;line-break:strict}
+.poster-canvas.kr-serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.poster-eyebrow{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;font-size:1.85cqw;line-height:1.2;font-weight:700;letter-spacing:.02em}
+.poster-heading{min-width:0}
+.poster-heading h2{font-family:inherit;margin:0;font-size:calc(6.7cqw * var(--title-scale,1));line-height:1.05;letter-spacing:-.052em;font-weight:780;text-wrap:balance}
+.kr-serif .poster-heading h2{font-weight:500;letter-spacing:-.035em;line-height:1.12}
+.poster-heading p{margin:2.6cqw 0 0;font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;font-size:1.65cqw;line-height:1.5;letter-spacing:-.015em;max-width:80%}
+.poster-footer{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;display:flex;justify-content:space-between;align-items:end;gap:2cqw;font-size:1.45cqw;line-height:1.25;font-weight:600;border-top:1px solid rgba(17,17,17,.18);padding-top:2.2cqw}
+.poster-footer span:last-child{opacity:.55}
+.poster-meta,.info-grid,.receipt-grid{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;display:grid;grid-template-columns:auto 1fr;align-content:start;gap:1.05cqw 2.7cqw;font-size:1.5cqw;line-height:1.32}
+.meta-key{font-weight:750}.meta-value{min-width:0}
+.poster-image{overflow:hidden;min-height:0;position:relative}
+.poster-image img{width:100%;height:100%;object-fit:cover;display:block}
+.poster-image.is-circle{aspect-ratio:1;border-radius:50%;justify-self:center;padding:5%;border:1px solid rgba(17,17,17,.18);background:rgba(255,255,255,.18)}
+.poster-image.is-circle img{border-radius:50%}
+.poster-motif{min-width:0;min-height:0}
+.poster-motif svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5}
+.poster-motif .motif-accent{fill:var(--accent,#6f4d92);stroke:none}
+
+/* tones */
+.tone-warm{background:#f3e6d4}
+.tone-cream{background:#f5f0e6}
+.tone-lavender{background:#e9e5f1}
+.tone-sage{background:#edf0e4}
+.tone-rose{background:#efe4e2}
+.tone-ivory{background:#f7f3ed}
+.tone-yellow{background:#ead45d}
+.tone-cobalt{background:#3650bf;color:#fff;--accent:#f0b949}
+.tone-lavender{--accent:#6f4d92}
+.tone-yellow{--accent:#ead45d}
+
+/* photo editorial */
+.template-photo-editorial{grid-template-rows:auto auto minmax(0,1fr) auto auto;row-gap:4.3cqw}
+.template-photo-editorial .poster-heading{align-self:start}
+.template-photo-editorial .poster-image{height:100%;min-height:0}
+.template-photo-editorial .poster-image.is-circle{width:61%;height:auto;align-self:center}
+.template-photo-editorial .poster-meta{padding-top:1.6cqw;border-top:1px solid rgba(17,17,17,.18)}
+
+/* information */
+.template-information-grid{grid-template-rows:auto auto minmax(0,1fr) 6% auto;row-gap:4.4cqw}
+.template-information-grid .info-grid{align-self:start;margin-top:2cqw;border-top:1px solid rgba(17,17,17,.18);padding-top:3.4cqw}
+.template-information-grid .info-bar{background:#254a3f;align-self:stretch}
+
+/* invitation */
+.template-invitation{grid-template-rows:auto minmax(0,1fr) auto;row-gap:4.7cqw}
+.invite-frame{border:1px solid rgba(125,94,86,.66);display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:auto 1fr auto;gap:4cqw 5cqw;padding:8%;min-height:0}
+.invite-frame .poster-heading{grid-column:1;grid-row:1}
+.invite-frame .poster-heading h2{font-size:calc(5.6cqw * var(--title-scale,1))}
+.invite-frame .poster-heading p{max-width:100%}
+.invite-frame .poster-meta{grid-column:1;grid-row:3;align-self:end}
+.invite-frame .poster-motif{grid-column:2;grid-row:2/4;width:72%;aspect-ratio:1;align-self:end;justify-self:end;color:#9d8179}
+.invite-frame .poster-motif svg{stroke-width:1.8}
+
+/* motif */
+.template-motif{grid-template-rows:auto auto minmax(0,1fr) auto auto;row-gap:3.9cqw}
+.template-motif .poster-motif{width:58%;height:100%;max-height:42cqw;justify-self:center;align-self:center}
+.template-motif .poster-meta{justify-self:start}
+.template-motif.motif-arrow .poster-motif{width:43%;justify-self:end;color:#f0b949}
+.template-motif.motif-flower .poster-motif{width:56%;color:#284d3f}
+.template-motif.motif-wave .poster-motif{width:67%;color:#6f6a78}
+.template-motif.motif-wave .poster-motif .motif-accent{fill:#6f4d92}
+
+/* receipt */
+.template-receipt{grid-template-rows:auto auto minmax(0,1fr) auto auto;row-gap:3.8cqw}
+.template-receipt .poster-image{background:#e6ddd0;padding:2.2%}
+.template-receipt .poster-image img{object-fit:contain}
+.template-receipt .receipt-grid{border-top:1px solid rgba(17,17,17,.22);padding-top:3.4cqw}
+
+/* newsletter */
+.template-newsletter{grid-template-rows:auto auto minmax(0,1fr) auto;row-gap:4.5cqw}
+.template-newsletter .poster-heading h2{font-family:Pretendard,"Arial Narrow",Arial,sans-serif;font-size:calc(5.7cqw * var(--title-scale,1));letter-spacing:-.045em}
+.template-newsletter .korean-sub{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:3.8cqw;line-height:1.13;margin-top:2.8cqw}
+.module-map{width:56%;aspect-ratio:1;justify-self:center;align-self:center;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;border:1px solid #51475a;font-family:Pretendard,sans-serif}
+.module-map span{display:flex;align-items:flex-end;padding:7%;font-size:1.45cqw;line-height:1.2;border-right:1px solid #51475a;border-bottom:1px solid #51475a}
+.module-map span:nth-child(2){border-right:0}.module-map span:nth-child(3){border-bottom:0}.module-map span:nth-child(4){border:0;background:#b49bc9;align-items:center;justify-content:center;font-weight:750}
+
+/* QA badges on archive, never exported inside canvas */
+.qa-badge{position:absolute;top:7px;right:7px;z-index:3;padding:4px 6px;border-radius:999px;background:#111;color:#fff;font:600 9px/1 Pretendard,sans-serif}
+.qa-badge.fail{background:#a12b24}
