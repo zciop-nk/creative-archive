@@ -1,19 +1,270 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creative Archive</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f4f4f0;color:#111;font:14px Arial,sans-serif}header{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;padding:14px 20px;background:#f4f4f0e8;border-bottom:1px solid #ccc;backdrop-filter:blur(10px)}b{letter-spacing:-.03em}.sp{flex:1}button,input,select{font:inherit;border:1px solid #ccc;background:#fff;border-radius:999px;padding:9px 12px}button{cursor:pointer}.on{background:#111;color:#fff}.wrap{max-width:1500px;margin:auto;padding:24px 20px 70px}h1{font-size:clamp(48px,8vw,108px);line-height:.84;letter-spacing:-.075em;margin:24px 0 48px}.tools{display:flex;gap:8px;flex-wrap:wrap}.tools input{flex:1;min-width:220px}.sec{border-top:1px solid #111;margin-top:28px;padding-top:10px;display:flex;justify-content:space-between}.projects{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.p{background:#fff;border:1px solid #ccc;border-radius:10px;padding:15px;min-height:135px;display:flex;flex-direction:column}.p h3{font-size:20px;margin:9px 0}.p small{color:#777}.p i{margin-top:auto;font-style:normal}.works{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.card .thumb{aspect-ratio:4/5;border:1px solid #ccc;border-radius:7px;overflow:hidden;position:relative}.deck .thumb,.ui .thumb{aspect-ratio:16/10}.meta{padding-top:7px;font-size:12px}.poster{height:100%;padding:8%;background:#f7f1df;position:relative}.poster h2{font-size:clamp(24px,5cqw,66px);line-height:.88;letter-spacing:-.06em;margin:18% 0}.poster em{position:absolute;right:7%;bottom:5%;font-size:12cqw;font-weight:900;font-style:normal}.slide{height:100%;padding:7%;background:#f7f7f2}.slide h2{font-size:7cqw;line-height:.95;letter-spacing:-.05em}.uiBox{height:100%;padding:5%;background:#eef1f4}.uiWin{height:100%;border:1px solid #d7dbe0;background:#fff;border-radius:10px;padding:7%}.uiWin h2{font-size:5cqw}.person{height:100%;background:linear-gradient(145deg,#ddd2c6,#aaa);position:relative}.head{position:absolute;left:38%;top:14%;width:25%;height:27%;border-radius:48%;background:#d3a98d;box-shadow:0 0 0 12px #111}.body{position:absolute;left:20%;bottom:-8%;width:60%;height:65%;background:#111;border-radius:50% 50% 20% 20%}.drawer{position:fixed;top:0;right:-760px;bottom:0;width:min(720px,96vw);background:#fff;z-index:9;box-shadow:-20px 0 70px #0003;transition:.2s;padding:18px;overflow:auto}.drawer.open{right:0}.stage{background:#ddd;padding:20px;border-radius:10px;overflow:auto}.big{width:540px;height:675px;margin:auto}.big.slide{width:640px;height:360px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.actions button{border-radius:8px}.empty{grid-column:1/-1;padding:50px;text-align:center;color:#777;border:1px dashed #bbb;border-radius:10px}.modal{position:fixed;inset:0;background:#0006;z-index:10;display:none;place-items:center}.modal.on{display:grid}.box{width:min(620px,94vw);background:#fff;padding:20px;border-radius:14px}.box textarea,.box input,.box select{width:100%;margin:5px 0 10px;border:1px solid #ccc;border-radius:8px;padding:10px}.box textarea{height:130px}@media(max-width:900px){.projects{grid-template-columns:repeat(2,1fr)}.works{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.projects{grid-template-columns:1fr}.works{grid-template-columns:repeat(2,1fr)}header .tab{display:none}}
-</style></head><body><header><b>CREATIVE ARCHIVE</b><span class="sp"></span><span id="tabs"></span><button id="new">+ 프로젝트</button><button id="cmd" class="on">ChatGPT 명령</button></header><main class="wrap"><h1>One archive.<br>Four creative modes.</h1><div class="tools"><input id="q" placeholder="검색"><select id="status"><option value="all">전체 상태</option><option value="fav">즐겨찾기</option><option value="approved">승인</option><option value="revise">수정</option></select></div><div class="sec"><b>PROJECTS</b><span id="pc"></span></div><section id="projects" class="projects"></section><div class="sec"><b>ARCHIVE</b><span id="wc"></span></div><section id="works" class="works"></section></main><aside id="drawer" class="drawer"><button onclick="drawer.classList.remove('open')">← 닫기</button><h2 id="dt"></h2><div id="db"></div></aside><div id="modal" class="modal"><div class="box"><h2 id="mt">ChatGPT 명령</h2><div id="form"></div><button onclick="modal.classList.remove('on')">닫기</button></div></div>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script><script>
-/* CHATGPT: normal content updates modify ARCHIVE_DATA only. */
-window.ARCHIVE_DATA={repository:'zciop-nk/creative-archive',projects:[
-{id:'people-001',category:'people',name:'Casting Room Starter',designSystem:{ratio:'4:5',rules:['face consistency','editorial']},projectPrompt:'인물/애니메이션 프로젝트. 얼굴 일관성, 에디토리얼 무드, 동일 캐릭터 반복 생성 시 정체성 유지.',works:[{id:'001',title:'CASTING 01',type:'person',prompt:'에디토리얼 캐스팅 포트레이트. 동일 인물 정체성 유지, 절제된 배경, 패션 매거진 무드.'}]},
-{id:'poster-001',category:'poster',name:'Editorial Poster Starter',designSystem:{canvas:'1080x1350',rules:['12col','strong type','no SaaS cards']},projectPrompt:'1080x1350 편집 포스터. 12-column grid, 강한 타이포 위계, 넓은 여백, SaaS 카드형 UI 금지.',works:[{id:'001',title:'MORNING ARCHIVE',type:'poster',prompt:'1080x1350 에디토리얼 포스터. 큰 제목, 비대칭 그리드, 크림 톤, 강한 타이포 위계.'},{id:'002',title:'FIELD NOTES',type:'poster',prompt:'편집디자인 기반 필드노트 포스터. 좁은 정보영역 + 넓은 여백 + 번호 체계.'}]},
-{id:'ppt-001',category:'ppt',name:'Editorial Deck Starter',designSystem:{ratio:'16:9',rules:['deck consistency','narrative first']},projectPrompt:'16:9 프레젠테이션. 한 Deck 전체가 하나의 작품. 모든 슬라이드가 동일한 타이포, 여백, 컬러, 차트 규칙을 공유하고 서사 흐름을 우선.',works:[{id:'001',title:'AI SERVICE PROPOSAL',type:'deck',prompt:'AI 서비스 제안서 Deck. Problem → Direction → Routes 흐름. 미니멀 에디토리얼 톤, 전 슬라이드 일관성 유지.',slides:[{title:'AI SERVICE\nPROPOSAL',body:'A concise narrative system.'},{title:'Problem → Direction',body:'Turn information into a route.'},{title:'One system. Three routes.',body:'Immediate, bridge, adjacent.'}]}]},
-{id:'uiux-001',category:'uiux',name:'Product UI Starter',designSystem:{rules:['border-first','clear states']},projectPrompt:'UIUX 프로젝트. border-first, 명확한 정보 계층, loading/empty/error state 포함, 장식보다 사용성 우선.',works:[{id:'001',title:'Analytics Dashboard',type:'ui',prompt:'제품 분석 대시보드. border-first, 카드 남발 금지, 명확한 hierarchy와 상태 표현.'}]}
-]};
-const cats=[['all','전체'],['people','인물/애니'],['poster','포스터'],['ppt','PPT'],['uiux','UIUX']],S=JSON.parse(localStorage.ca||'{}');let cat='all',sel=null;const $=s=>document.querySelector(s),esc=s=>(s||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));function rv(p,w){return S[p.id+'::'+w.id]||{fav:false,status:''}}function save(){localStorage.ca=JSON.stringify(S)}function items(){let a=ARCHIVE_DATA.projects.flatMap(p=>p.works.map(w=>({p,w})));if(cat!='all')a=a.filter(x=>x.p.category==cat);let q=$('#q').value.toLowerCase();if(q)a=a.filter(x=>(x.p.name+' '+x.w.title).toLowerCase().includes(q));let st=$('#status').value;if(st!='all')a=a.filter(x=>st=='fav'?rv(x.p,x.w).fav:rv(x.p,x.w).status==st);return a}
-function thumb(w){if(w.type=='poster')return `<div class="poster"><small>ISSUE ${w.id}</small><h2>${esc(w.title)}</h2><em>${w.id}</em></div>`;if(w.type=='person')return `<div class="person"><div class="head"></div><div class="body"></div></div>`;if(w.type=='deck')return `<div class="slide"><small>PRESENTATION</small><h2>${esc(w.slides[0].title).replace(/\n/g,'<br>')}</h2></div>`;return `<div class="uiBox"><div class="uiWin"><small>PRODUCT</small><h2>${esc(w.title)}</h2><hr><p>Overview · Analytics · Users</p></div></div>`}
-function render(){tabs.innerHTML=cats.map(c=>`<button class="tab ${cat==c[0]?'on':''}" onclick="cat='${c[0]}';render()">${c[1]}</button>`).join('');let ps=ARCHIVE_DATA.projects.filter(p=>cat=='all'||p.category==cat);projects.innerHTML=ps.map(p=>`<article class="p"><small>${p.category.toUpperCase()}</small><h3>${esc(p.name)}</h3><span>${JSON.stringify(p.designSystem.rules||[])}</span><i>${p.works.length} ${p.category=='ppt'?'DECKS':'WORKS'}</i></article>`).join('');pc.textContent=ps.length+' projects';let a=items();works.innerHTML=a.length?a.map(({p,w})=>`<article class="card ${w.type=='deck'?'deck':w.type=='ui'?'ui':''}" onclick="openD('${p.id}','${w.id}')"><div class="thumb">${thumb(w)}</div><div class="meta">${w.id} · ${esc(w.title)} ${rv(p,w).status?'· '+rv(p,w).status:''}</div></article>`).join(''):'<div class="empty">결과물이 없습니다.</div>';wc.textContent=a.length+' items'}
-function openD(pid,wid){let p=ARCHIVE_DATA.projects.find(x=>x.id==pid),w=p.works.find(x=>x.id==wid);sel={p,w};dt.textContent=w.title;let content=w.type=='deck'?w.slides.map((s,i)=>`<div class="big slide" data-slide><small>${i+1}/${w.slides.length}</small><h2>${esc(s.title).replace(/\n/g,'<br>')}</h2><p>${esc(s.body)}</p></div>`).join('<br>'):`<div class="big" data-export>${thumb(w)}</div>`;db.innerHTML=`<div class="stage">${content}</div><div class="actions"><button onclick="png()">PNG</button><button onclick="pdf()">${w.type=='deck'?'전체 Deck PDF':'PDF'}</button><button onclick="mark('fav')">☆ 즐겨찾기</button><button onclick="mark('approved')">승인</button><button onclick="mark('revise')">수정</button><button onclick="copyPrompt()">프롬프트 복사</button></div><div style="margin-top:14px;border-top:1px solid #ddd;padding-top:14px"><b>DESIGN PROMPT</b><pre style="white-space:pre-wrap;background:#f6f6f3;border:1px solid #ddd;border-radius:10px;padding:12px;line-height:1.55">${esc(w.prompt||'프롬프트 미등록')}</pre><b>PROJECT PROMPT</b><pre style="white-space:pre-wrap;background:#f6f6f3;border:1px solid #ddd;border-radius:10px;padding:12px;line-height:1.55">${esc(p.projectPrompt||'')}</pre></div>`;drawer.classList.add('open')}
-async function cap(el,scale=3){await document.fonts?.ready;return html2canvas(el,{scale,backgroundColor:'#fff',useCORS:true})}function dl(b,n){let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}async function png(){let el=sel.w.type=='deck'?document.querySelector('[data-slide]'):document.querySelector('[data-export]'),c=await cap(el);c.toBlob(b=>dl(b,sel.p.id+'-'+sel.w.id+'.png'))}async function pdf(){let {jsPDF}=jspdf;if(sel.w.type=='deck'){let ss=[...document.querySelectorAll('[data-slide]')],d;for(let i=0;i<ss.length;i++){let c=await cap(ss[i],2);if(!d)d=new jsPDF({orientation:'landscape',unit:'px',format:[640,360]});else d.addPage([640,360],'landscape');d.addImage(c.toDataURL(),'PNG',0,0,640,360)}d.save(sel.p.id+'-'+sel.w.id+'.pdf')}else{let el=document.querySelector('[data-export]'),c=await cap(el,2),d=new jsPDF({unit:'px',format:[540,675]});d.addImage(c.toDataURL(),'PNG',0,0,540,675);d.save(sel.p.id+'-'+sel.w.id+'.pdf')}}async function copyPrompt(){let t=`PROJECT: ${sel.p.name}\n\nDESIGN SYSTEM:\n${JSON.stringify(sel.p.designSystem,null,2)}\n\nPROJECT PROMPT:\n${sel.p.projectPrompt||''}\n\nDESIGN PROMPT:\n${sel.w.prompt||''}`;await navigator.clipboard.writeText(t);alert('프롬프트 복사됨')}function mark(v){let k=sel.p.id+'::'+sel.w.id,r=rv(sel.p,sel.w);if(v=='fav')r.fav=!r.fav;else r.status=v;S[k]=r;save();render();openD(sel.p.id,sel.w.id)}
-q.oninput=render;status.onchange=render;cmd.onclick=()=>{mt.textContent='ChatGPT 명령';form.innerHTML=`<select id="cp">${ARCHIVE_DATA.projects.map(p=>`<option value="${p.id}">${p.name}</option>`).join('')}</select><textarea id="ct"></textarea><button class="on" onclick="copyCmd()">명령 복사</button>`;cp.onchange=fill;fill();modal.classList.add('on')};function fill(){let p=ARCHIVE_DATA.projects.find(x=>x.id==cp.value);ct.value=`GitHub 저장소 zciop-nk/creative-archive의 ${p.id} (${p.name}) 프로젝트를 적용해. index.html의 ARCHIVE_DATA와 designSystem을 먼저 읽고 기존 규격을 유지해. 중복 없이 10개 추가 생성하고 각 작품에 실제 사용한 디자인 프롬프트를 prompt 필드로 함께 저장해서 다음 번호부터 works에 등록하고 main에 커밋해. PPT면 10개 슬라이드가 아니라 완성 Deck 10개를 뜻하며 각 Deck 전체가 하나의 디자인 세트여야 해.`}async function copyCmd(){await navigator.clipboard.writeText(ct.value);alert('복사됨')}
-document.querySelector('#new').onclick=()=>{mt.textContent='신규 프로젝트';form.innerHTML=`<select id="nc"><option value="people">인물/애니</option><option value="poster">포스터</option><option value="ppt">PPT</option><option value="uiux">UIUX</option></select><input id="nn" placeholder="프로젝트 이름"><textarea id="nt" placeholder="추가 요구사항"></textarea><button class="on" onclick="copyNew()">신규 프로젝트 명령 복사</button>`;modal.classList.add('on')};async function copyNew(){let t=`GitHub 저장소 zciop-nk/creative-archive에 신규 프로젝트를 추가해. 메뉴 ${nc.value}, 이름 ${nn.value}. 지금 Chat에 첨부한 참고자료를 분석해 공통 시각 규칙을 designSystem으로 구조화하고, 재사용 가능한 프로젝트 프롬프트를 projectPrompt로 저장하고, 각 결과물에는 실제 사용한 프롬프트를 prompt로 저장해서 index.html의 ARCHIVE_DATA.projects에 등록해. 테스트 10개만 생성해. ${nc.value=='ppt'?'PPT는 슬라이드 낱장이 아니라 전체 Deck 한 세트가 작품 1개이고 전체 슬라이드 디자인과 서사를 일관되게 유지해.':''} 추가 요구: ${nt.value}`;await navigator.clipboard.writeText(t);alert('복사됨')}
-render();</script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creative Archive — Poster Lab</title>
+<style>
+:root{
+  --bg:#f2efe7; --paper:#fffdf8; --ink:#111; --muted:#6f6c66; --line:#b9b4aa;
+  --accent:#202020; --soft:#e7e1d5; --radius:4px; --max:1500px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Segoe UI",Arial,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.topbar{height:50px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(242,239,231,.96);backdrop-filter:blur(10px);z-index:20}
+.brand{font-size:12px;font-weight:700;letter-spacing:.02em}
+.topnav{margin-left:auto;display:flex;gap:18px;align-items:center;font-size:12px}
+.topnav button{border:0;background:none;padding:0}
+.topnav .pill{border:1px solid var(--ink);padding:7px 11px;border-radius:999px;background:var(--ink);color:#fff}
+.wrap{max-width:var(--max);margin:auto;padding:18px}
+.mast{display:grid;grid-template-columns:1fr 260px;gap:24px;padding:24px 0 20px;border-bottom:1px solid var(--line)}
+.kicker{font-size:11px;color:#9b5d56;font-weight:700;margin-bottom:10px}
+.title{font-size:clamp(38px,5.5vw,78px);line-height:.93;letter-spacing:-.06em;margin:0;max-width:850px}
+.title em{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+.desc{font-size:12px;line-height:1.65;color:#4e4b46;margin-top:18px;max-width:760px}
+.counter{border-left:1px solid var(--line);padding-left:28px;display:flex;flex-direction:column;justify-content:space-between}
+.counter strong{font-size:88px;line-height:.8;letter-spacing:-.08em}
+.counter small{font-size:10px;line-height:1.45;color:var(--muted)}
+.project-strip{display:flex;gap:0;border-bottom:1px solid var(--line);overflow:auto}
+.project-strip button{border:0;border-right:1px solid var(--line);background:transparent;padding:11px 14px;font-size:11px;white-space:nowrap}
+.project-strip button.active{background:var(--ink);color:#fff}
+.controls{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:12px 0 14px;border-bottom:1px solid var(--line)}
+.search{border:0;border-bottom:1px solid var(--line);background:transparent;padding:10px 0;outline:none;min-width:0}
+.select,.ghost{background:transparent;border:1px solid var(--line);padding:8px 10px;border-radius:2px;font-size:11px}
+.archive-head{display:flex;justify-content:space-between;align-items:end;padding:12px 0 8px}
+.archive-head span{font-size:10px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 14px;padding-bottom:60px}
+.card{min-width:0}
+.thumb{aspect-ratio:4/5;background:#ddd;border:1px solid #c9c3b7;position:relative;overflow:hidden}
+.meta{display:flex;justify-content:space-between;gap:12px;padding-top:7px;font-size:11px}
+.meta b{font-weight:600}
+.meta span{color:var(--muted)}
+.poster{position:absolute;inset:0;padding:8%;display:flex;flex-direction:column}
+.poster small{font-size:2.2cqw;letter-spacing:.04em}
+.poster h2{margin:10% 0 0;font-size:8cqw;line-height:.9;letter-spacing:-.055em}
+.poster p{font-size:2.3cqw;line-height:1.4;margin-top:auto;max-width:68%}
+.p1{background:#f6e6d3}.p1 .hero{height:34%;background:linear-gradient(145deg,#c95d34,#7f2510);margin-top:auto;position:relative}
+.p1 .hero:after{content:"";position:absolute;width:32%;aspect-ratio:1;border-radius:50%;background:#d6b08f;left:34%;top:18%;box-shadow:0 24px 30px #0002}
+.p2{background:#e9e5f0}.p2 h2{font-family:Arial Narrow,Arial,sans-serif;font-size:6.7cqw;letter-spacing:-.035em}
+.p2 .shape{margin:auto;width:45%;aspect-ratio:1;border:1px solid #3b2a3d;position:relative}
+.p2 .shape:after{content:"";position:absolute;inset:18% -18% -18% 18%;background:#bda2d1;z-index:-1}
+.p3{background:#edf0e2}.p3 .weeks{margin-top:12%;display:grid;grid-template-columns:auto 1fr;gap:4% 8%;font-size:2.2cqw}.p3 .bar{height:7%;margin-top:auto;background:#173c33}
+.p4{background:#2748bc;color:#fff}.p4 .box{border:1px solid #9fb2ff;padding:8%;margin-top:12%;min-height:54%;position:relative}.p4 .arrow{position:absolute;right:8%;bottom:10%;font-size:12cqw;color:#f0b944}
+.p5{background:#f6f0e6}.p5 h2{font-family:Georgia,"Times New Roman",serif;font-size:7.2cqw;font-weight:400}.p5 .book{width:48%;height:26%;margin:auto;border-left:3px solid #b6463a;border-bottom:1px solid #111;transform:skewY(8deg)}
+.p6{background:#efe3df}.p6 .frame{border:1px solid #8b6863;height:55%;margin-top:13%;display:grid;place-items:center}.p6 .mini{width:28%;aspect-ratio:1;border:1px solid #8b6863}
+.p7{background:#f4f0e8}.p7 .circle{width:58%;aspect-ratio:1;border:1px solid #ccc;border-radius:50%;margin:18% auto 0;display:grid;place-items:center}.p7 .flower{width:24%;aspect-ratio:1;border-radius:50%;background:#cf3927;box-shadow:2.2cqw 0 #111,-2.2cqw 0 #111,0 2.2cqw #111,0 -2.2cqw #111}
+.p8{background:#f8dc57}.p8 h2{font-size:8.5cqw}.p8 .flower{width:46%;aspect-ratio:1;border-radius:50%;background:#224f3b;margin:auto;box-shadow:3.4cqw 0 #224f3b,-3.4cqw 0 #224f3b,0 3.4cqw #224f3b,0 -3.4cqw #224f3b}
+.empty{grid-column:1/-1;border:1px dashed var(--line);padding:50px;text-align:center;color:var(--muted)}
+.backdrop{position:fixed;inset:0;background:#1118;z-index:40;display:none}
+.backdrop.show{display:block}
+.panel{position:fixed;right:-760px;top:0;bottom:0;width:min(720px,96vw);background:#f8f6f1;z-index:50;transition:.24s ease;padding:18px;overflow:auto;border-left:1px solid var(--line)}
+.panel.open{right:0}
+.panel-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+.panel-head button{border:0;background:none}
+.preview{background:#d7d3cb;padding:28px;margin-top:16px;display:grid;place-items:center}
+.preview .thumb{width:min(520px,100%);aspect-ratio:4/5}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+.actions button{border:1px solid var(--line);background:var(--paper);padding:8px 10px;border-radius:2px;font-size:11px}
+.promptbox{border-top:1px solid var(--line);padding-top:14px}
+.promptbox h4{margin:0 0 6px;font-size:11px}
+.promptbox pre{margin:0 0 14px;background:#eee9df;border:1px solid #d7d0c4;padding:12px;white-space:pre-wrap;line-height:1.55;font-family:inherit;font-size:12px}
+.modal{position:fixed;inset:0;background:#1118;z-index:60;display:none;place-items:center;padding:20px}
+.modal.show{display:grid}
+.modal-card{width:min(620px,100%);background:#f8f6f1;border:1px solid var(--line);padding:18px}
+.modal-card h3{font-size:26px;letter-spacing:-.04em;margin:0 0 16px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#fff;padding:10px;border-radius:0}
+.field textarea{min-height:130px;resize:vertical}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px}
+.modal-actions button{border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:0}
+.modal-actions .primary{background:#111;color:#fff;border-color:#111}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}.mast{grid-template-columns:1fr}.counter{border-left:0;border-top:1px solid var(--line);padding:18px 0 0;flex-direction:row}.counter strong{font-size:56px}}
+@media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr)}.controls{grid-template-columns:1fr}.topnav .hide-sm{display:none}.title{font-size:48px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">DESIGN PRACTICE / CREATIVE ARCHIVE</div>
+  <nav class="topnav">
+    <button class="hide-sm" data-cat="people">인물/애니</button>
+    <button class="hide-sm" data-cat="poster"><b>포스터</b></button>
+    <button class="hide-sm" data-cat="ppt">PPT</button>
+    <button class="hide-sm" data-cat="uiux">UIUX</button>
+    <button id="newProject">+ 프로젝트</button>
+    <button id="chatCmd" class="pill">ChatGPT 명령</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="mast">
+    <div>
+      <div class="kicker">일상에서 시작한 편집 디자인 실험들</div>
+      <h1 class="title">포스터를 쌓고,<br><em>규칙을 남깁니다.</em></h1>
+      <p class="desc">프로젝트마다 참고자료에서 추출한 디자인 시스템과 실제 생성 프롬프트를 함께 보관합니다. 결과물은 다시 쓰고, 변형하고, 다음 프로젝트의 출발점으로 재사용할 수 있습니다.</p>
+    </div>
+    <div class="counter">
+      <strong id="totalCount">008</strong>
+      <small>POSTER ARCHIVE<br>현재 포스터 프로젝트부터 검증 중</small>
+    </div>
+  </section>
+
+  <div id="projectStrip" class="project-strip"></div>
+
+  <div class="controls">
+    <input id="search" class="search" placeholder="제목, 번호, 태그로 찾기">
+    <select id="projectFilter" class="select"></select>
+    <button id="newPoster" class="ghost">+ 새 포스터 프로젝트</button>
+  </div>
+
+  <div class="archive-head">
+    <b>POSTER ARCHIVE</b>
+    <span id="resultCount"></span>
+  </div>
+  <section id="grid" class="grid"></section>
+</main>
+
+<div id="backdrop" class="backdrop"></div>
+<aside id="panel" class="panel">
+  <div class="panel-head">
+    <div><small id="panelProject"></small><h2 id="panelTitle" style="margin:4px 0 0"></h2></div>
+    <button id="closePanel">닫기 ×</button>
+  </div>
+  <div id="panelBody"></div>
+</aside>
+
+<div id="modal" class="modal">
+  <div class="modal-card">
+    <h3 id="modalTitle">새 포스터 프로젝트</h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+window.ARCHIVE_DATA={
+  repository:"zciop-nk/creative-archive",
+  projects:[
+    {
+      id:"poster-001",
+      category:"poster",
+      name:"Everyday Editorial",
+      description:"일상 소재를 편집디자인 문법으로 재구성",
+      designSystem:{
+        canvas:"1080x1350",
+        grid:"12 column",
+        typography:"large headline + small editorial metadata",
+        palette:"warm paper + restrained accent",
+        spacing:"large outer margin / asymmetric balance",
+        avoid:["SaaS card layout","heavy shadow","random gradient","excessive rounded UI"]
+      },
+      projectPrompt:"1080x1350 포스터. 편집디자인 기반. 넓은 여백, 강한 타이포 위계, 비대칭 균형, 작은 메타데이터, 절제된 색상. 장식보다 정보 구조와 타이포가 우선이며 SaaS 카드형 UI와 과한 라운드/그라데이션은 사용하지 않는다.",
+      works:[
+        {id:"001",title:"모서리 커피 브랜드 연구",type:"poster",variant:"p1",tags:["brand","coffee","editorial"],prompt:"가상 커피 브랜드 케이스스터디 표지. 따뜻한 살구색 종이 톤, 큰 한글 제목, 작은 영문 시리즈 표기, 하단에 제품 사진을 연상시키는 단색 이미지 블록. 12-column editorial grid."},
+        {id:"002",title:"Between Thinking & Making",type:"poster",variant:"p2",tags:["newsletter","type"],prompt:"스튜디오 뉴스레터 헤더. 라일락 종이 톤, 좁은 영문 산세리프 제목, 한글 부제, 중앙의 정사각형 그리드 그래픽. 작은 호수/날짜 표기."},
+        {id:"003",title:"다음 네 주를 함께 그립니다",type:"poster",variant:"p3",tags:["roadmap","information"],prompt:"프로젝트 로드맵 포스터. 아이보리-연녹색 배경, WEEK 01~04 정보가 정렬된 타이포 그리드, 하단 짙은 녹색 바. 설명적이지만 미니멀하게."},
+        {id:"004",title:"다음 프로젝트를 이야기해 볼까요",type:"poster",variant:"p4",tags:["contact","bold"],prompt:"상담 연락처 카드형 포스터. 코발트 블루 바탕, 얇은 흰 선 프레임, 하단 우측 노란 화살표, 큰 한글 문장과 작은 영문 보조 텍스트."},
+        {id:"005",title:"좋은 브리프를 쓰는 연습",type:"poster",variant:"p5",tags:["workshop","serif"],prompt:"워크숍 안내 포스터. 따뜻한 크림 배경, 세리프 중심 제목, 중앙에 펼친 책을 추상화한 선 그래픽. 붉은 포인트 한 줄."},
+        {id:"006",title:"새로운 집에 당신을 초대해요",type:"poster",variant:"p6",tags:["invitation","minimal"],prompt:"집들이 초대장. 아주 옅은 로즈 베이지, 얇은 프레임, 넓은 여백, 중앙 좌측 작은 한글 문장, 하단 우측 기하학 창문 아이콘."},
+        {id:"007",title:"함께 맞이할 첫 번째 계절",type:"poster",variant:"p7",tags:["wedding","invitation"],prompt:"작은 결혼식 초대장. 오프화이트, 매우 얇은 원형 라인, 중앙의 작은 꽃 모티프, 절제된 타이포, 세부 정보는 하단 작은 크기로."},
+        {id:"008",title:"좋은 날은 같이 보내요",type:"poster",variant:"p8",tags:["birthday","graphic"],prompt:"생일 파티 초대장. 버터 옐로 배경, 굵은 한글 제목, 중앙에 짙은 녹색 꽃 모티프, 하단 작은 일정과 장소 정보."}
+      ]
+    }
+  ]
+};
+
+const $=s=>document.querySelector(s);
+const esc=s=>(s??"").replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));
+let activeProject="all",selected=null;
+
+function allPosterProjects(){return ARCHIVE_DATA.projects.filter(p=>p.category==="poster")}
+function allWorks(){
+  return allPosterProjects().flatMap(p=>p.works.map(w=>({p,w})));
+}
+function posterHTML(w){
+  const common='<small>OUR ARCHIVE · '+w.id.padStart(3,"0")+'</small>';
+  if(w.variant==="p1")return '<div class="poster p1">'+common+'<h2>'+esc(w.title)+'</h2><p>FICTIONAL CASE STUDY / 01</p><div class="hero"></div></div>';
+  if(w.variant==="p2")return '<div class="poster p2">'+common+'<h2>'+esc(w.title)+'</h2><div class="shape"></div><p>STUDIO LETTER / NO.011</p></div>';
+  if(w.variant==="p3")return '<div class="poster p3">'+common+'<h2>'+esc(w.title)+'</h2><div class="weeks"><b>WEEK 01</b><span>브리프와 자료 정리</span><b>WEEK 02</b><span>시각 방향 제안</span><b>WEEK 03</b><span>디자인 수정</span><b>WEEK 04</b><span>최종 검수</span></div><div class="bar"></div></div>';
+  if(w.variant==="p4")return '<div class="poster p4">'+common+'<div class="box"><h2>'+esc(w.title)+'</h2><div class="arrow">→</div></div><p>NEW BUSINESS / CONTACT CARD</p></div>';
+  if(w.variant==="p5")return '<div class="poster p5">'+common+'<h2>'+esc(w.title)+'</h2><div class="book"></div><p>WORDS BEFORE FORMS</p></div>';
+  if(w.variant==="p6")return '<div class="poster p6">'+common+'<div class="frame"><h2>'+esc(w.title)+'</h2><div class="mini"></div></div><p>HOUSEWARMING / OPEN HOUSE</p></div>';
+  if(w.variant==="p7")return '<div class="poster p7">'+common+'<div class="circle"><div class="flower"></div></div><h2>'+esc(w.title)+'</h2><p>WEDDING INVITATION</p></div>';
+  return '<div class="poster p8">'+common+'<h2>'+esc(w.title)+'</h2><div class="flower"></div><p>BIRTHDAY GATHERING</p></div>';
+}
+function filtered(){
+  const q=$("#search").value.trim().toLowerCase();
+  return allWorks().filter(({p,w})=>{
+    if(activeProject!=="all"&&p.id!==activeProject)return false;
+    const hay=(w.id+" "+w.title+" "+(w.tags||[]).join(" ")).toLowerCase();
+    return !q||hay.includes(q);
+  });
+}
+function render(){
+  const ps=allPosterProjects();
+  $("#projectStrip").innerHTML=
+    '<button class="'+(activeProject==="all"?"active":"")+'" onclick="setProject(\'all\')">전체</button>'+
+    ps.map(p=>'<button class="'+(activeProject===p.id?"active":"")+'" onclick="setProject(\''+p.id+'\')">'+esc(p.name)+'</button>').join("");
+  $("#projectFilter").innerHTML='<option value="all">모든 프로젝트</option>'+ps.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("");
+  $("#projectFilter").value=activeProject;
+  const items=filtered();
+  $("#totalCount").textContent=String(allWorks().length).padStart(3,"0");
+  $("#resultCount").textContent=items.length+" / "+allWorks().length+" poster";
+  $("#grid").innerHTML=items.length?items.map(({p,w})=>'<article class="card" onclick="openWork(\''+p.id+'\',\''+w.id+'\')"><div class="thumb">'+posterHTML(w)+'</div><div class="meta"><b>'+w.id+' / '+esc(w.title)+'</b><span>'+esc((w.tags||[]).slice(0,2).join(" · "))+'</span></div></article>').join(""):'<div class="empty">조건에 맞는 포스터가 없습니다.</div>';
+}
+function setProject(id){activeProject=id;render()}
+$("#search").addEventListener("input",render);
+$("#projectFilter").addEventListener("change",e=>{activeProject=e.target.value;render()});
+function openWork(pid,wid){
+  const p=ARCHIVE_DATA.projects.find(x=>x.id===pid),w=p.works.find(x=>x.id===wid);
+  selected={p,w};
+  $("#panelProject").textContent=p.name+" / "+w.id;
+  $("#panelTitle").textContent=w.title;
+  $("#panelBody").innerHTML='<div class="preview"><div class="thumb" data-export>'+posterHTML(w)+'</div></div>'+
+  '<div class="actions"><button onclick="exportPNG()">PNG 2×</button><button onclick="exportPDF()">PDF</button><button onclick="copyPrompt()">프롬프트 복사</button></div>'+
+  '<div class="promptbox"><h4>DESIGN PROMPT</h4><pre>'+esc(w.prompt||"")+'</pre><h4>PROJECT PROMPT</h4><pre>'+esc(p.projectPrompt||"")+'</pre><h4>DESIGN SYSTEM</h4><pre>'+esc(JSON.stringify(p.designSystem,null,2))+'</pre></div>';
+  $("#panel").classList.add("open");$("#backdrop").classList.add("show");
+}
+function closePanel(){$("#panel").classList.remove("open");$("#backdrop").classList.remove("show")}
+$("#closePanel").onclick=closePanel;$("#backdrop").onclick=closePanel;
+async function capture(){await document.fonts?.ready;return html2canvas(document.querySelector("[data-export]"),{scale:2,backgroundColor:"#fff",useCORS:true})}
+function download(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+async function exportPNG(){const c=await capture();c.toBlob(b=>download(b,selected.p.id+"-"+selected.w.id+".png"))}
+async function exportPDF(){const {jsPDF}=jspdf,c=await capture(),pdf=new jsPDF({unit:"px",format:[1080,1350]});pdf.addImage(c.toDataURL("image/png"),"PNG",0,0,1080,1350);pdf.save(selected.p.id+"-"+selected.w.id+".pdf")}
+async function copyPrompt(){const t="PROJECT: "+selected.p.name+"\n\nDESIGN SYSTEM\n"+JSON.stringify(selected.p.designSystem,null,2)+"\n\nPROJECT PROMPT\n"+selected.p.projectPrompt+"\n\nDESIGN PROMPT\n"+selected.w.prompt;await navigator.clipboard.writeText(t);alert("프롬프트를 복사했습니다.")}
+function showModal(mode){
+  if(mode==="project"){
+    $("#modalTitle").textContent="새 포스터 프로젝트";
+    $("#modalBody").innerHTML='<div class="field"><label>프로젝트 이름</label><input id="pn" placeholder="예: Korean Editorial 02"></div><div class="field"><label>추가 요구사항</label><textarea id="pr" placeholder="참고자료는 ChatGPT 대화에 첨부하고, 여기에는 고정하고 싶은 조건만 적어도 됩니다."></textarea></div><div class="modal-actions"><button onclick="hideModal()">닫기</button><button class="primary" onclick="copyNewProject()">ChatGPT용 명령 복사</button></div>';
+  }else{
+    $("#modalTitle").textContent="현재 프로젝트로 생성";
+    const ps=allPosterProjects();
+    $("#modalBody").innerHTML='<div class="field"><label>프로젝트</label><select id="cp">'+ps.map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join("")+'</select></div><div class="field"><label>생성 개수</label><input id="count" type="number" value="10" min="1"></div><div class="field"><label>추가 지시</label><textarea id="extra" placeholder="예: 제품 사진 없는 타이포 중심 10개"></textarea></div><div class="modal-actions"><button onclick="hideModal()">닫기</button><button class="primary" onclick="copyGenerate()">명령 복사</button></div>';
+  }
+  $("#modal").classList.add("show");
+}
+function hideModal(){$("#modal").classList.remove("show")}
+$("#newProject").onclick=()=>showModal("project");
+$("#newPoster").onclick=()=>showModal("project");
+$("#chatCmd").onclick=()=>showModal("generate");
+$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")hideModal()});
+async function copyNewProject(){
+  const name=$("#pn").value.trim(),req=$("#pr").value.trim();
+  if(!name)return alert("프로젝트 이름을 입력해 주세요.");
+  const t='GitHub 저장소 zciop-nk/creative-archive에 새 포스터 프로젝트 "'+name+'"을 추가해. 지금 이 Chat에 첨부한 레퍼런스 자료들을 먼저 분석해서 공통 Visual DNA를 추출하고, designSystem과 projectPrompt를 저장해. 기존 프로젝트를 복제하지 말고 참고자료의 타이포, 그리드, 여백, 색상, 이미지 처리 규칙을 구조화해. 테스트 포스터 10개를 만들고 각 결과물에 실제 사용한 prompt를 저장해. index.html의 ARCHIVE_DATA에 추가하고 main에 커밋해. 추가 요구: '+req;
+  await navigator.clipboard.writeText(t);alert("신규 프로젝트 명령을 복사했습니다.");
+}
+async function copyGenerate(){
+  const p=ARCHIVE_DATA.projects.find(x=>x.id===$("#cp").value),n=Number($("#count").value||10),extra=$("#extra").value.trim();
+  const t='GitHub 저장소 zciop-nk/creative-archive의 '+p.id+' ('+p.name+') 포스터 프로젝트를 적용해. index.html의 designSystem, projectPrompt, 기존 작품 prompt를 먼저 읽고 시각 규칙을 유지해. 기존 작품과 실질적으로 중복되지 않는 포스터 '+n+'개를 다음 번호부터 추가해. 각 작품은 실제 사용한 prompt와 tags를 함께 저장하고 main에 커밋해. 추가 지시: '+extra;
+  await navigator.clipboard.writeText(t);alert("생성 명령을 복사했습니다.");
+}
+document.querySelectorAll("[data-cat]").forEach(btn=>btn.onclick=()=>{if(btn.dataset.cat!=="poster")alert("지금은 포스터부터 완성 중입니다. 포스터 검증 후 이 메뉴를 같은 방식으로 확장할게요.")});
+render();
+</script>
+</body>
+</html>
